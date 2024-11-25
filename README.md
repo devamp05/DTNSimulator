@@ -85,8 +85,8 @@ The program accepts the following parameters via the command line:
 
 ### Clone the Repository
 ```bash
-git clone <repository-url>
-cd dtn-simulation
+git clone https://github.com/devamp05/DTNSimulator.git
+cd DTNSimulator
 ```
 
 ### Compile the Code
