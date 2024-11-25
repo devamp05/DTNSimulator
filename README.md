@@ -90,7 +90,7 @@ cd DTNSimulator
 ```
 
 ### Compile the Code
-Use the provided Makefile to compile the program:
+Use the provided Makefile to compile the program or to skip compilation and directly used the compiled file skip to Run the Simulation step:
 
 ```bash
 make
