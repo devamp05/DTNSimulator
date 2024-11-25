@@ -1,0 +1,155 @@
+/*
+ * group-10 
+ * Narek Tamrazyan NSID: uwo916 Student Number: 11315451
+ * Devam Punitbhai Patel NSID: dns682 Student Number: 11316715
+ */
+ 
+commit 938a5bfb40ffdb7120d486773c125f0e24a380a0
+Author: Narek <uwo916@usask.ca>
+Date:   Sat Apr 6 16:54:20 2024 -0600
+
+    Added 1 more test case for buffer size
+
+commit 6599503215663ad6d6446b019fe68408c3ad5f53
+Author: Narek Tamrazyan (uwo916) <uwo916@mail.usask.ca>
+Date:   Sat Apr 6 16:43:48 2024 -0600
+
+    Uploading solution for question part B subpart 1
+
+commit ba8f976168f81c7a8af6a396b9bf4f0cff00ce56
+Author: Narek Tamrazyan (uwo916) <uwo916@mail.usask.ca>
+Date:   Sat Apr 6 16:43:33 2024 -0600
+
+    Uploading solution for question part A subpart 3
+
+commit 1153f2472c12e9e3edd5ecd5dc348f24e4bc7b72
+Author: Narek Tamrazyan (uwo916) <uwo916@mail.usask.ca>
+Date:   Sat Apr 6 16:42:10 2024 -0600
+
+    Delete QuestionPartA_3.pdf
+
+commit 8cbc124ae2b77b5075555609521ffe3de79e2e46
+Author: Narek Tamrazyan (uwo916) <uwo916@mail.usask.ca>
+Date:   Sat Apr 6 16:41:31 2024 -0600
+
+    Uploading solution for question part A subpart 3
+
+commit 0d25bf059179fe85b7e0182351b73b2a17eac88e
+Author: Narek Tamrazyan (uwo916) <uwo916@mail.usask.ca>
+Date:   Sat Apr 6 16:41:13 2024 -0600
+
+    Uploading solution for question part A subpart 2
+
+commit 8e1cf200e7d982f2f5914bc253c40af89d9deadc
+Author: Narek Tamrazyan (uwo916) <uwo916@mail.usask.ca>
+Date:   Sat Apr 6 16:40:45 2024 -0600
+
+    Uploading Question Part A, subpart 1 solution
+
+commit 89c938bb79e055e61bd3ba731d5ac6ee65cf5984
+Author: Narek <uwo916@usask.ca>
+Date:   Sat Apr 6 16:40:00 2024 -0600
+
+    Test report for the design
+
+commit f46be551dcc033bc33ecb8d5af843c38e3811641
+Author: Narek <uwo916@usask.ca>
+Date:   Sat Apr 6 16:31:44 2024 -0600
+
+    Added 4 more test cases designs and results
+
+commit 6c5c732430a6e62ae436aac5d5c0ef8a80c40bc8
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Sat Apr 6 15:44:50 2024 -0600
+
+    new version
+
+commit 95962bc412d57207db43b98da1244ec8841623fc
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Sat Apr 6 14:21:37 2024 -0600
+
+    removed the build
+
+commit 3df5d30928d402751ce28f3c617dfc1efb85a633
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Sat Apr 6 14:21:14 2024 -0600
+
+    all nodes are sending packets to nodes in their range but they are not mobile right now next we need to add the mobility
+
+commit 874bc4a2a50e4492753c64f67ae68cab9cf7b112
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Sat Apr 6 02:16:32 2024 -0600
+
+    works for multiple timesteps now but looks like it is not calculating total hops properly
+
+commit 7d69b28ea095172af3a93b77203d695456df4733
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Sat Apr 6 02:00:20 2024 -0600
+
+    trying to run the simulator for multiple timesteps
+
+commit 6dd2ef15c6184e5d499a7e64d8927b1a412b9444
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Fri Apr 5 13:36:08 2024 -0600
+
+    updated the design document to include our protocol with Narek
+
+commit aae6fa494a16ad85a8898889003352c2294c49f8
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Fri Apr 5 11:28:29 2024 -0600
+
+    every node is transmiting its location to other and they are checking if some other node is within their range of transmission now need to implement our protocol to transmit packets
+
+commit f436bbfaa4741ddeb8fd149a87ba66409161a4f4
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Fri Apr 5 01:33:18 2024 -0600
+
+    bug fixed now all the threads have the map ready with all the other threads
+
+commit 75ccd212aaacf90d1d20cd9f382cdaf563178172
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Fri Apr 5 01:00:12 2024 -0600
+
+    partially fixed that bug but it introduced another
+
+commit d8ed04f1c56a1626d5b8e79e8f81a044a382eec0
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Thu Apr 4 16:48:47 2024 -0600
+
+    commit before changing, trying to exchange location between all the nodes but the second last one is not getting location of the last
+
+commit b91e93144942e5210d633379d60564ebed449929
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Thu Apr 4 00:28:04 2024 -0600
+
+    all nodes connect to each other finally after using an array of semaphores for each
+
+commit d0cd61406b4d5cc01b76833dab1bf3628c37052b
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Wed Apr 3 21:37:16 2024 -0600
+
+    fixing a bug
+
+commit 02770c924c0a01506159db5be01dd1431b433695
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Wed Apr 3 16:53:06 2024 -0600
+
+    remove build from the previous commit
+
+commit 9f12f5c3d8a34ffcd12d0bcf1ff2f600ab738a2e
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Wed Apr 3 16:52:33 2024 -0600
+
+    got all my threads to connect with each other finally after switching from posix to rtt and back to posix
+
+commit 69aaa5413e7f82bcc7666cd775ca562903eb6420
+Author: DEVAM PUNITBHAI PATEL (dns682) <dns682@mail.usask.ca>
+Date:   Tue Apr 2 16:20:14 2024 -0600
+
+    initial commit, write design for Part C
+
+commit 607e7882370cdee00653186ee3ebc1f7cbbcd5cc
+Author: Dwight Makaroff (dwm138) <makaroff@cs.usask.ca>
+Date:   Wed Jan 10 11:06:00 2024 -0600
+
+    Initial commit

@@ -1,0 +1,72 @@
+/*
+ * group-10 
+ * Narek Tamrazyan NSID: uwo916 Student Number: 11315451
+ * Devam Punitbhai Patel NSID: dns682 Student Number: 11316715
+ */
+
+First we have tested the system when nodes were not mobile they just stayed at
+the position they were generated. We will add the mobility after this but this
+is just a backup so that if mobility doen't work we can submit without it.
+
+
+decreasing transmission range and desitnation packet count decreased
+the amount of packets sent compared to packets received.
+The highest factor in receiving playing the destination packet count.
+increasing it from 8 to 16 provided 100% transmitting/receiving rate
+space left affected the generation time, high value made packets to
+wait more to have enough free space to generate.
+Transmission range was important with empty space left parameter
+as they seemed to balance each other in case of nodes receiving
+them.
+Timesteps affected possitively when high with high destination
+number, increasing the chance that packet will be receiving.
+Decreasing buffer resulted in packets getting lost which
+decreased the amount of packet being reached to destination
+successfully.
+
+1. First test for 1 timestep with around 11 nodes and just 1 destination node.
+	200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+2. Second test for 2 timesteps with around 11 nodes and just 1 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+3. Test for 3 timesteps with around 11 nodes and just 1 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+/*how the performance varies by increasing the number of destination nodes*/
+4. Test for 3 timesteps with around 11 nodes and 2 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+
+5. Test for 3 timesteps with around 11 nodes and 3 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+6. Test for 3 timesteps with around 11 nodes and 5 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+7. Test for 4 timesteps with around 14 nodes and 7 destination 
+	node. 260 transmission range, 12 packets buffer space and 25% space to be 
+	left for self generated packets.
+
+8. Test for 9 timesteps with around 35 nodes and 16 destination 
+	node. 160 transmission range, 14 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+9. Test for 9 timesteps with around 35 nodes and 16 destination 
+	node. 100 transmission range, 14 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+10. Test for 9 timesteps with around 20 nodes and 8 destination 
+	node. 100 transmission range, 14 packets buffer space and 60% space to be 
+	left for self generated packets.
+
+
+11. Test for 9 timesteps with around 20 nodes and 10 destination 
+	node. 100 transmission range, 4 packets buffer space and 60% space to be 
+	left for self generated packets.

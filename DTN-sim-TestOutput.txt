@@ -1,0 +1,2862 @@
+/*
+ * group-10 
+ * Narek Tamrazyan NSID: uwo916 Student Number: 11315451
+ * Devam Punitbhai Patel NSID: dns682 Student Number: 11316715
+ */
+
+First we have tested the system when nodes were not mobile they just stayed at
+the position they were generated. We will add the mobility after this but this
+is just a backup so that if mobility doen't work we can submit without it.
+
+1. First test for 1 timestep with around 11 nodes and just 1 destination node.
+	200 transmission range, 10 buffer space and 20% space to be left for 
+	self generated packets.
+Result:
+	For this one 16 total packet transmissions happened in the system, but
+	none of them reached the destination node and every node got the location
+	of other nodes correctly.
+Output:
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> ./build/bin/DTN-sim 
+usage: N: total nodes in the system, 
+K: number of timesteps to run for, 
+D: total number of destination nodes, 
+R: possible transmission range for each node, 
+B: total buffer space each node has (in number of packets), 
+P: percentage of buffer space to leave out for local packets according to 
+protocol
+
+*****************************************************************************
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> 
+./build/bin/DTN-sim 11 1 1 200 10 20
+id: 0 startLocation x, y: 68, 996
+id: 2 startLocation x, y: 595, 891
+id: 9 startLocation x, y: 26, 390
+id: 7 startLocation x, y: 761, 922
+id: 3 startLocation x, y: 460, 403
+id: 6 startLocation x, y: 514, 458
+id: 8 startLocation x, y: 509, 965
+id: 5 startLocation x, y: 990, 145
+id: 4 startLocation x, y: 843, 307
+id: 10 startLocation x, y: 968, 114
+id: 1 startLocation x, y: 538, 510
+1 incremented the loopCounter to 1
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 595, y = 891
+myId: 1, id: 3 x = 460, y = 403
+myId: 1, id: 4 x = 843, y = 307
+myId: 1, id: 5 x = 990, y = 145
+myId: 1, id: 6 x = 514, y = 458
+myId: 1, id: 7 x = 761, y = 922
+myId: 1, id: 8 x = 509, y = 965
+myId: 1, id: 9 x = 26, y = 390
+myId: 1, id: 10 x = 968, y = 114
+myId: 6, id: 0 x = 68, y = 996
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 538, y = 510
+myId: 2, id: 3 x = 460, y = 403
+myId: 2, id: 4 x = 843, y = 307
+myId: 2, id: 5 x = 990, y = 145
+myId: 2, id: 6 x = 514, y = 458
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 538, y = 510
+myId: 10, id: 2 x = 595, y = 891
+myId: 10, id: 3 x = 460, y = 403
+myId: 10, id: 4 x = 843, y = 307
+myId: 10, id: 5 x = 990, y = 145
+myId: 10, id: 6 x = 514, y = 458
+myId: 10, id: 7 x = 761, y = 922
+myId: 10, id: 8 x = 509, y = 965
+myId: 10, id: 9 x = 26, y = 390
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 538, y = 510
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 538, y = 510
+myId: 4, id: 2 x = 595, y = 891
+myId: 4, id: 3 x = 460, y = 403
+myId: 4, id: 5 x = 990, y = 145
+myId: 4, id: 6 x = 514, y = 458
+myId: 4, id: 7 x = 761, y = 922
+myId: 4, id: 8 x = 509, y = 965
+myId: 4, id: 9 x = 26, y = 390
+myId: 4, id: 10 x = 968, y = 114
+myId: 2, id: 7 x = 761, y = 922
+myId: 2, id: 8 x = 509, y = 965
+myId: 2, id: 9 x = 26, y = 390
+myId: 2, id: 10 x = 968, y = 114
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 538, y = 510
+myId: 9, id: 2 x = 595, y = 891
+myId: 9, id: 3 x = 460, y = 403
+myId: 9, id: 4 x = 843, y = 307
+myId: 9, id: 5 x = 990, y = 145
+myId: 9, id: 6 x = 514, y = 458
+myId: 9, id: 7 x = 761, y = 922
+myId: 9, id: 8 x = 509, y = 965
+myId: 9, id: 10 x = 968, y = 114
+myId: 0, id: 1 x = 538, y = 510
+myId: 0, id: 2 x = 595, y = 891
+myId: 0, id: 3 x = 460, y = 403
+myId: 0, id: 4 x = 843, y = 307
+myId: 0, id: 5 x = 990, y = 145
+myId: 0, id: 6 x = 514, y = 458
+myId: 0, id: 7 x = 761, y = 922
+myId: 0, id: 8 x = 509, y = 965
+myId: 0, id: 9 x = 26, y = 390
+myId: 0, id: 10 x = 968, y = 114
+myId: 3, id: 2 x = 595, y = 891
+myId: 3, id: 4 x = 843, y = 307
+myId: 3, id: 5 x = 990, y = 145
+myId: 3, id: 6 x = 514, y = 458
+myId: 3, id: 7 x = 761, y = 922
+myId: 3, id: 8 x = 509, y = 965
+myId: 3, id: 9 x = 26, y = 390
+myId: 3, id: 10 x = 968, y = 114
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 538, y = 510
+myId: 5, id: 2 x = 595, y = 891
+myId: 5, id: 3 x = 460, y = 403
+myId: 5, id: 4 x = 843, y = 307
+myId: 5, id: 6 x = 514, y = 458
+myId: 5, id: 7 x = 761, y = 922
+myId: 5, id: 8 x = 509, y = 965
+myId: 5, id: 9 x = 26, y = 390
+myId: 5, id: 10 x = 968, y = 114
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 538, y = 510
+myId: 7, id: 2 x = 595, y = 891
+myId: 7, id: 3 x = 460, y = 403
+myId: 7, id: 4 x = 843, y = 307
+myId: 7, id: 5 x = 990, y = 145
+myId: 7, id: 6 x = 514, y = 458
+myId: 7, id: 8 x = 509, y = 965
+myId: 7, id: 9 x = 26, y = 390
+myId: 7, id: 10 x = 968, y = 114
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 538, y = 510
+myId: 8, id: 2 x = 595, y = 891
+myId: 8, id: 3 x = 460, y = 403
+myId: 8, id: 4 x = 843, y = 307
+myId: 8, id: 5 x = 990, y = 145
+myId: 8, id: 6 x = 514, y = 458
+myId: 8, id: 7 x = 761, y = 922
+myId: 8, id: 9 x = 26, y = 390
+myId: 8, id: 10 x = 968, y = 114
+myId: 6, id: 1 x = 538, y = 510
+myId: 6, id: 2 x = 595, y = 891
+myId: 6, id: 3 x = 460, y = 403
+myId: 6, id: 4 x = 843, y = 307
+myId: 6, id: 5 x = 990, y = 145
+myId: 6, id: 7 x = 761, y = 922
+myId: 6, id: 8 x = 509, y = 965
+myId: 6, id: 9 x = 26, y = 390
+myId: 6, id: 10 x = 968, y = 114
+totalPacketsReceived 0, totalHops 16
+*****************************************************************************
+
+
+2. Second test for 2 timesteps with around 11 nodes and just 1 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+Result:
+	For this one 35 total packet transmissions happened in the system, but
+	none of them reached the destination node and every node got the location
+	of other nodes correctly.
+
+Output:
+*****************************************************************************
+
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> 
+./build/bin/DTN-sim 11 2 1 200 10 20
+id: 0 startLocation x, y: 68, 996
+id: 4 startLocation x, y: 595, 891
+id: 1 startLocation x, y: 26, 390
+id: 2 startLocation x, y: 761, 922
+id: 5 startLocation x, y: 990, 843
+id: 9 startLocation x, y: 514, 458
+id: 8 startLocation x, y: 403, 510
+id: 3 startLocation x, y: 509, 965
+id: 6 startLocation x, y: 460, 538
+id: 10 startLocation x, y: 307, 968
+id: 7 startLocation x, y: 145, 114
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+myId: 0, id: 1 x = 26, y = 390
+myId: 0, id: 2 x = 761, y = 922
+myId: 0, id: 3 x = 509, y = 965
+myId: 0, id: 4 x = 595, y = 891
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 761, y = 922
+myId: 1, id: 3 x = 509, y = 965
+myId: 1, id: 4 x = 595, y = 891
+myId: 0, id: 5 x = 990, y = 843
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 26, y = 390
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 26, y = 390
+myId: 4, id: 2 x = 761, y = 922
+myId: 4, id: 3 x = 509, y = 965
+myId: 4, id: 5 x = 990, y = 843
+myId: 4, id: 6 x = 460, y = 538
+myId: 4, id: 7 x = 145, y = 114
+myId: 4, id: 8 x = 403, y = 510
+myId: 4, id: 9 x = 514, y = 458
+myId: 4, id: 10 x = 307, y = 968
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 26, y = 390
+myId: 7, id: 2 x = 761, y = 922
+myId: 7, id: 3 x = 509, y = 965
+myId: 7, id: 4 x = 595, y = 891
+myId: 7, id: 5 x = 990, y = 843
+myId: 7, id: 6 x = 460, y = 538
+myId: 7, id: 8 x = 403, y = 510
+myId: 7, id: 9 x = 514, y = 458
+myId: 7, id: 10 x = 307, y = 968
+myId: 1, id: 5 x = 990, y = 843
+myId: 0, id: 6 x = 460, y = 538
+myId: 0, id: 7 x = 145, y = 114
+myId: 0, id: 8 x = 403, y = 510
+myId: 0, id: 9 x = 514, y = 458
+myId: 0, id: 10 x = 307, y = 968
+myId: 3, id: 0 x = 68, y = 996
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 26, y = 390
+myId: 5, id: 2 x = 761, y = 922
+myId: 5, id: 3 x = 509, y = 965
+myId: 5, id: 4 x = 595, y = 891
+myId: 5, id: 6 x = 460, y = 538
+myId: 5, id: 7 x = 145, y = 114
+myId: 5, id: 8 x = 403, y = 510
+myId: 5, id: 9 x = 514, y = 458
+myId: 5, id: 10 x = 307, y = 968
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 26, y = 390
+myId: 10, id: 2 x = 761, y = 922
+myId: 10, id: 3 x = 509, y = 965
+myId: 10, id: 4 x = 595, y = 891
+myId: 10, id: 5 x = 990, y = 843
+myId: 10, id: 6 x = 460, y = 538
+myId: 10, id: 7 x = 145, y = 114
+myId: 10, id: 8 x = 403, y = 510
+myId: 10, id: 9 x = 514, y = 458
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 26, y = 390
+myId: 2, id: 3 x = 509, y = 965
+myId: 2, id: 4 x = 595, y = 891
+myId: 2, id: 5 x = 990, y = 843
+myId: 2, id: 6 x = 460, y = 538
+myId: 2, id: 7 x = 145, y = 114
+myId: 2, id: 8 x = 403, y = 510
+myId: 2, id: 9 x = 514, y = 458
+myId: 2, id: 10 x = 307, y = 968
+myId: 1, id: 6 x = 460, y = 538
+myId: 1, id: 7 x = 145, y = 114
+myId: 1, id: 8 x = 403, y = 510
+myId: 1, id: 9 x = 514, y = 458
+myId: 1, id: 10 x = 307, y = 968
+myId: 6, id: 2 x = 761, y = 922
+myId: 6, id: 3 x = 509, y = 965
+myId: 6, id: 4 x = 595, y = 891
+myId: 6, id: 5 x = 990, y = 843
+myId: 6, id: 7 x = 145, y = 114
+myId: 6, id: 8 x = 403, y = 510
+myId: 6, id: 9 x = 514, y = 458
+myId: 6, id: 10 x = 307, y = 968
+myId: 3, id: 1 x = 26, y = 390
+myId: 3, id: 2 x = 761, y = 922
+myId: 3, id: 4 x = 595, y = 891
+myId: 3, id: 5 x = 990, y = 843
+myId: 3, id: 6 x = 460, y = 538
+myId: 3, id: 7 x = 145, y = 114
+myId: 3, id: 8 x = 403, y = 510
+myId: 3, id: 9 x = 514, y = 458
+myId: 3, id: 10 x = 307, y = 968
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 26, y = 390
+myId: 8, id: 2 x = 761, y = 922
+myId: 8, id: 3 x = 509, y = 965
+myId: 8, id: 4 x = 595, y = 891
+myId: 8, id: 5 x = 990, y = 843
+myId: 8, id: 6 x = 460, y = 538
+myId: 8, id: 7 x = 145, y = 114
+myId: 8, id: 9 x = 514, y = 458
+myId: 8, id: 10 x = 307, y = 968
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 26, y = 390
+myId: 9, id: 2 x = 761, y = 922
+myId: 9, id: 3 x = 509, y = 965
+myId: 9, id: 4 x = 595, y = 891
+myId: 9, id: 5 x = 990, y = 843
+myId: 9, id: 6 x = 460, y = 538
+myId: 9, id: 7 x = 145, y = 114
+myId: 9, id: 8 x = 403, y = 510
+myId: 9, id: 10 x = 307, y = 968
+totalPacketsReceived 0, totalHops 35
+*****************************************************************************
+
+3. Test for 3 timesteps with around 11 nodes and just 1 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+Result:
+	For this one 69 total packet transmissions happened in the system, but
+	none of them reached the destination node and every node got the location
+	of other nodes correctly.
+
+Output:
+*****************************************************************************
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> 
+./build/bin/DTN-sim 11 3 1 200 10 20
+id: 0 startLocation x, y: 68, 996
+id: 1 startLocation x, y: 595, 891
+id: 2 startLocation x, y: 26, 390
+id: 3 startLocation x, y: 761, 922
+id: 8 startLocation x, y: 460, 538
+id: 4 startLocation x, y: 403, 510
+id: 9 startLocation x, y: 509, 965
+id: 6 startLocation x, y: 990, 145
+id: 10 startLocation x, y: 843, 307
+id: 7 startLocation x, y: 968, 114
+id: 5 startLocation x, y: 514, 458
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 26, y = 390
+myId: 1, id: 3 x = 761, y = 922
+myId: 1, id: 4 x = 403, y = 510
+myId: 1, id: 5 x = 514, y = 458
+myId: 1, id: 6 x = 990, y = 145
+myId: 1, id: 7 x = 968, y = 114
+myId: 1, id: 8 x = 460, y = 538
+myId: 1, id: 9 x = 509, y = 965
+myId: 1, id: 10 x = 843, y = 307
+myId: 2, id: 0 x = 68, y = 996
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 595, y = 891
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 595, y = 891
+myId: 8, id: 2 x = 26, y = 390
+myId: 8, id: 3 x = 761, y = 922
+myId: 8, id: 4 x = 403, y = 510
+myId: 8, id: 5 x = 514, y = 458
+myId: 8, id: 6 x = 990, y = 145
+myId: 8, id: 7 x = 968, y = 114
+myId: 8, id: 9 x = 509, y = 965
+myId: 8, id: 10 x = 843, y = 307
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 595, y = 891
+myId: 4, id: 2 x = 26, y = 390
+myId: 4, id: 3 x = 761, y = 922
+myId: 4, id: 5 x = 514, y = 458
+myId: 4, id: 6 x = 990, y = 145
+myId: 4, id: 7 x = 968, y = 114
+myId: 4, id: 8 x = 460, y = 538
+myId: 4, id: 9 x = 509, y = 965
+myId: 4, id: 10 x = 843, y = 307
+myId: 2, id: 1 x = 595, y = 891
+myId: 2, id: 3 x = 761, y = 922
+myId: 2, id: 4 x = 403, y = 510
+myId: 2, id: 5 x = 514, y = 458
+myId: 2, id: 6 x = 990, y = 145
+myId: 2, id: 7 x = 968, y = 114
+myId: 2, id: 8 x = 460, y = 538
+myId: 2, id: 9 x = 509, y = 965
+myId: 2, id: 10 x = 843, y = 307
+myId: 0, id: 1 x = 595, y = 891
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 595, y = 891
+myId: 7, id: 2 x = 26, y = 390
+myId: 7, id: 3 x = 761, y = 922
+myId: 7, id: 4 x = 403, y = 510
+myId: 7, id: 5 x = 514, y = 458
+myId: 7, id: 6 x = 990, y = 145
+myId: 7, id: 8 x = 460, y = 538
+myId: 7, id: 9 x = 509, y = 965
+myId: 7, id: 10 x = 843, y = 307
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 595, y = 891
+myId: 9, id: 2 x = 26, y = 390
+myId: 9, id: 3 x = 761, y = 922
+myId: 9, id: 4 x = 403, y = 510
+myId: 9, id: 5 x = 514, y = 458
+myId: 9, id: 6 x = 990, y = 145
+myId: 9, id: 7 x = 968, y = 114
+myId: 9, id: 8 x = 460, y = 538
+myId: 9, id: 10 x = 843, y = 307
+myId: 6, id: 2 x = 26, y = 390
+myId: 6, id: 3 x = 761, y = 922
+myId: 6, id: 4 x = 403, y = 510
+myId: 6, id: 5 x = 514, y = 458
+myId: 6, id: 7 x = 968, y = 114
+myId: 6, id: 8 x = 460, y = 538
+myId: 6, id: 9 x = 509, y = 965
+myId: 6, id: 10 x = 843, y = 307
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 595, y = 891
+myId: 5, id: 2 x = 26, y = 390
+myId: 5, id: 3 x = 761, y = 922
+myId: 5, id: 4 x = 403, y = 510
+myId: 5, id: 6 x = 990, y = 145
+myId: 5, id: 7 x = 968, y = 114
+myId: 5, id: 8 x = 460, y = 538
+myId: 5, id: 9 x = 509, y = 965
+myId: 5, id: 10 x = 843, y = 307
+myId: 0, id: 2 x = 26, y = 390
+myId: 0, id: 3 x = 761, y = 922
+myId: 0, id: 4 x = 403, y = 510
+myId: 0, id: 5 x = 514, y = 458
+myId: 0, id: 6 x = 990, y = 145
+myId: 0, id: 7 x = 968, y = 114
+myId: 0, id: 8 x = 460, y = 538
+myId: 0, id: 9 x = 509, y = 965
+myId: 0, id: 10 x = 843, y = 307
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 595, y = 891
+myId: 10, id: 2 x = 26, y = 390
+myId: 10, id: 3 x = 761, y = 922
+myId: 10, id: 4 x = 403, y = 510
+myId: 10, id: 5 x = 514, y = 458
+myId: 10, id: 6 x = 990, y = 145
+myId: 10, id: 7 x = 968, y = 114
+myId: 10, id: 8 x = 460, y = 538
+myId: 10, id: 9 x = 509, y = 965
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 595, y = 891
+myId: 3, id: 2 x = 26, y = 390
+myId: 3, id: 4 x = 403, y = 510
+myId: 3, id: 5 x = 514, y = 458
+myId: 3, id: 6 x = 990, y = 145
+myId: 3, id: 7 x = 968, y = 114
+myId: 3, id: 8 x = 460, y = 538
+myId: 3, id: 9 x = 509, y = 965
+myId: 3, id: 10 x = 843, y = 307
+totalPacketsReceived 0, totalHops 69
+*****************************************************************************
+
+/*how the performance varies by increasing the number of destination nodes*/
+4. Test for 3 timesteps with around 11 nodes and 2 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+Result:
+	For this one 49 total packet transmissions happened in the system, and
+	2 of them reached the destination node and every node got the location
+	of other nodes correctly.
+
+Output:
+*****************************************************************************
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> 
+./build/bin/DTN-sim 11 3 2 200 10 20
+id: 0 startLocation x, y: 68, 996
+id: 4 startLocation x, y: 595, 891
+id: 10 startLocation x, y: 460, 538
+id: 5 startLocation x, y: 761, 922
+id: 2 startLocation x, y: 509, 965
+id: 3 startLocation x, y: 26, 390
+id: 9 startLocation x, y: 403, 510
+id: 1 startLocation x, y: 990, 145
+id: 6 startLocation x, y: 843, 307
+id: 8 startLocation x, y: 968, 114
+id: 7 startLocation x, y: 514, 458
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 990, y = 145
+myId: 2, id: 3 x = 26, y = 390
+myId: 2, id: 4 x = 595, y = 891
+myId: 2, id: 5 x = 761, y = 922
+myId: 2, id: 6 x = 843, y = 307
+myId: 2, id: 7 x = 514, y = 458
+myId: 2, id: 8 x = 968, y = 114
+myId: 2, id: 9 x = 403, y = 510
+myId: 2, id: 10 x = 460, y = 538
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 990, y = 145
+myId: 3, id: 2 x = 509, y = 965
+myId: 3, id: 4 x = 595, y = 891
+myId: 3, id: 5 x = 761, y = 922
+myId: 3, id: 6 x = 843, y = 307
+myId: 3, id: 7 x = 514, y = 458
+myId: 3, id: 8 x = 968, y = 114
+myId: 0, id: 1 x = 990, y = 145
+myId: 0, id: 2 x = 509, y = 965
+myId: 0, id: 3 x = 26, y = 390
+myId: 0, id: 4 x = 595, y = 891
+myId: 0, id: 5 x = 761, y = 922
+myId: 0, id: 6 x = 843, y = 307
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 990, y = 145
+myId: 4, id: 2 x = 509, y = 965
+myId: 4, id: 3 x = 26, y = 390
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 509, y = 965
+myId: 1, id: 3 x = 26, y = 390
+myId: 1, id: 4 x = 595, y = 891
+myId: 1, id: 5 x = 761, y = 922
+myId: 1, id: 6 x = 843, y = 307
+myId: 1, id: 7 x = 514, y = 458
+myId: 1, id: 8 x = 968, y = 114
+myId: 1, id: 9 x = 403, y = 510
+myId: 1, id: 10 x = 460, y = 538
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 990, y = 145
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 990, y = 145
+myId: 7, id: 2 x = 509, y = 965
+myId: 7, id: 3 x = 26, y = 390
+myId: 7, id: 4 x = 595, y = 891
+myId: 7, id: 5 x = 761, y = 922
+myId: 7, id: 6 x = 843, y = 307
+myId: 7, id: 8 x = 968, y = 114
+myId: 7, id: 9 x = 403, y = 510
+myId: 7, id: 10 x = 460, y = 538
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 990, y = 145
+myId: 8, id: 2 x = 509, y = 965
+myId: 8, id: 3 x = 26, y = 390
+myId: 8, id: 4 x = 595, y = 891
+myId: 8, id: 5 x = 761, y = 922
+myId: 8, id: 6 x = 843, y = 307
+myId: 8, id: 7 x = 514, y = 458
+myId: 8, id: 9 x = 403, y = 510
+myId: 8, id: 10 x = 460, y = 538
+myId: 4, id: 5 x = 761, y = 922
+myId: 4, id: 6 x = 843, y = 307
+myId: 4, id: 7 x = 514, y = 458
+myId: 4, id: 8 x = 968, y = 114
+myId: 4, id: 9 x = 403, y = 510
+myId: 4, id: 10 x = 460, y = 538
+myId: 3, id: 9 x = 403, y = 510
+myId: 3, id: 10 x = 460, y = 538
+myId: 9, id: 2 x = 509, y = 965
+myId: 9, id: 3 x = 26, y = 390
+myId: 9, id: 4 x = 595, y = 891
+myId: 9, id: 5 x = 761, y = 922
+myId: 9, id: 6 x = 843, y = 307
+myId: 9, id: 7 x = 514, y = 458
+myId: 9, id: 8 x = 968, y = 114
+myId: 9, id: 10 x = 460, y = 538
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 990, y = 145
+myId: 5, id: 2 x = 509, y = 965
+myId: 5, id: 3 x = 26, y = 390
+myId: 5, id: 4 x = 595, y = 891
+myId: 5, id: 6 x = 843, y = 307
+myId: 5, id: 7 x = 514, y = 458
+myId: 5, id: 8 x = 968, y = 114
+myId: 5, id: 9 x = 403, y = 510
+myId: 5, id: 10 x = 460, y = 538
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 990, y = 145
+myId: 6, id: 2 x = 509, y = 965
+myId: 6, id: 3 x = 26, y = 390
+myId: 6, id: 4 x = 595, y = 891
+myId: 6, id: 5 x = 761, y = 922
+myId: 6, id: 7 x = 514, y = 458
+myId: 6, id: 8 x = 968, y = 114
+myId: 6, id: 9 x = 403, y = 510
+myId: 6, id: 10 x = 460, y = 538
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 990, y = 145
+myId: 10, id: 2 x = 509, y = 965
+myId: 10, id: 3 x = 26, y = 390
+myId: 10, id: 4 x = 595, y = 891
+myId: 10, id: 5 x = 761, y = 922
+myId: 10, id: 6 x = 843, y = 307
+myId: 10, id: 7 x = 514, y = 458
+myId: 10, id: 8 x = 968, y = 114
+myId: 10, id: 9 x = 403, y = 510
+myId: 0, id: 7 x = 514, y = 458
+myId: 0, id: 8 x = 968, y = 114
+myId: 0, id: 9 x = 403, y = 510
+myId: 0, id: 10 x = 460, y = 538
+totalPacketsReceived 2, totalHops 49
+*****************************************************************************
+
+
+5. Test for 3 timesteps with around 11 nodes and 3 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+Result:
+	For this one 33 total packet transmissions happened in the system, and
+	3 of them reached the destination node and every node got the location
+	of other nodes correctly.
+
+Output:
+*****************************************************************************
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> 
+./build/bin/DTN-sim 11 3 3 200 10 20
+id: 0 startLocation x, y: 68, 996
+id: 1 startLocation x, y: 595, 891
+id: 5 startLocation x, y: 761, 922
+id: 9 startLocation x, y: 114, 514
+id: 10 startLocation x, y: 460, 538
+id: 3 startLocation x, y: 403, 510
+id: 6 startLocation x, y: 509, 965
+id: 4 startLocation x, y: 990, 145
+id: 7 startLocation x, y: 843, 307
+id: 8 startLocation x, y: 968, 458
+id: 2 startLocation x, y: 26, 390
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 595, y = 891
+myId: 2, id: 3 x = 403, y = 510
+myId: 2, id: 4 x = 990, y = 145
+myId: 2, id: 5 x = 761, y = 922
+myId: 2, id: 6 x = 509, y = 965
+myId: 2, id: 7 x = 843, y = 307
+myId: 2, id: 8 x = 968, y = 458
+myId: 2, id: 9 x = 114, y = 514
+myId: 2, id: 10 x = 460, y = 538
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 595, y = 891
+myId: 3, id: 2 x = 26, y = 390
+myId: 3, id: 4 x = 990, y = 145
+myId: 3, id: 5 x = 761, y = 922
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 595, y = 891
+myId: 4, id: 2 x = 26, y = 390
+myId: 4, id: 3 x = 403, y = 510
+myId: 4, id: 5 x = 761, y = 922
+myId: 4, id: 6 x = 509, y = 965
+myId: 4, id: 7 x = 843, y = 307
+myId: 4, id: 8 x = 968, y = 458
+myId: 4, id: 9 x = 114, y = 514
+myId: 4, id: 10 x = 460, y = 538
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 595, y = 891
+myId: 5, id: 2 x = 26, y = 390
+myId: 5, id: 3 x = 403, y = 510
+myId: 5, id: 4 x = 990, y = 145
+myId: 5, id: 6 x = 509, y = 965
+myId: 5, id: 7 x = 843, y = 307
+myId: 5, id: 8 x = 968, y = 458
+myId: 5, id: 9 x = 114, y = 514
+myId: 5, id: 10 x = 460, y = 538
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 595, y = 891
+myId: 6, id: 2 x = 26, y = 390
+myId: 6, id: 3 x = 403, y = 510
+myId: 6, id: 4 x = 990, y = 145
+myId: 6, id: 5 x = 761, y = 922
+myId: 6, id: 7 x = 843, y = 307
+myId: 6, id: 8 x = 968, y = 458
+myId: 6, id: 9 x = 114, y = 514
+myId: 6, id: 10 x = 460, y = 538
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 26, y = 390
+myId: 1, id: 3 x = 403, y = 510
+myId: 1, id: 4 x = 990, y = 145
+myId: 1, id: 5 x = 761, y = 922
+myId: 1, id: 6 x = 509, y = 965
+myId: 1, id: 7 x = 843, y = 307
+myId: 1, id: 8 x = 968, y = 458
+myId: 1, id: 9 x = 114, y = 514
+myId: 1, id: 10 x = 460, y = 538
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 595, y = 891
+myId: 7, id: 2 x = 26, y = 390
+myId: 7, id: 3 x = 403, y = 510
+myId: 7, id: 4 x = 990, y = 145
+myId: 7, id: 5 x = 761, y = 922
+myId: 7, id: 6 x = 509, y = 965
+myId: 7, id: 8 x = 968, y = 458
+myId: 7, id: 9 x = 114, y = 514
+myId: 7, id: 10 x = 460, y = 538
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 595, y = 891
+myId: 9, id: 2 x = 26, y = 390
+myId: 9, id: 3 x = 403, y = 510
+myId: 9, id: 4 x = 990, y = 145
+myId: 9, id: 5 x = 761, y = 922
+myId: 9, id: 6 x = 509, y = 965
+myId: 9, id: 7 x = 843, y = 307
+myId: 9, id: 8 x = 968, y = 458
+myId: 9, id: 10 x = 460, y = 538
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 595, y = 891
+myId: 8, id: 2 x = 26, y = 390
+myId: 8, id: 3 x = 403, y = 510
+myId: 8, id: 4 x = 990, y = 145
+myId: 8, id: 5 x = 761, y = 922
+myId: 8, id: 6 x = 509, y = 965
+myId: 8, id: 7 x = 843, y = 307
+myId: 8, id: 9 x = 114, y = 514
+myId: 8, id: 10 x = 460, y = 538
+myId: 0, id: 1 x = 595, y = 891
+myId: 0, id: 2 x = 26, y = 390
+myId: 0, id: 3 x = 403, y = 510
+myId: 0, id: 4 x = 990, y = 145
+myId: 0, id: 5 x = 761, y = 922
+myId: 0, id: 6 x = 509, y = 965
+myId: 0, id: 7 x = 843, y = 307
+myId: 0, id: 8 x = 968, y = 458
+myId: 0, id: 9 x = 114, y = 514
+myId: 0, id: 10 x = 460, y = 538
+myId: 3, id: 6 x = 509, y = 965
+myId: 3, id: 7 x = 843, y = 307
+myId: 3, id: 8 x = 968, y = 458
+myId: 3, id: 9 x = 114, y = 514
+myId: 3, id: 10 x = 460, y = 538
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 595, y = 891
+myId: 10, id: 2 x = 26, y = 390
+myId: 10, id: 3 x = 403, y = 510
+myId: 10, id: 4 x = 990, y = 145
+myId: 10, id: 5 x = 761, y = 922
+myId: 10, id: 6 x = 509, y = 965
+myId: 10, id: 7 x = 843, y = 307
+myId: 10, id: 8 x = 968, y = 458
+myId: 10, id: 9 x = 114, y = 514
+totalPacketsReceived 3, totalHops 33
+*****************************************************************************
+
+6. Test for 3 timesteps with around 11 nodes and 5 destination 
+	node. 200 transmission range, 10 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+Result:
+	For this only 10 total packet transmissions happened in the system, and
+	4 of them reached the destination node and every node got the location
+	of other nodes correctly.
+
+Output:
+*****************************************************************************
+
+
+dns682@s360-peon8:~/CMPT434/cmpt434-group10/asn3> 
+./build/bin/DTN-sim 11 3 5 200 10 20
+id: 0 startLocation x, y: 68, 996
+id: 1 startLocation x, y: 595, 891
+id: 2 startLocation x, y: 26, 390
+id: 3 startLocation x, y: 761, 922
+id: 5 startLocation x, y: 460, 538
+id: 4 startLocation x, y: 403, 510
+id: 6 startLocation x, y: 509, 145
+id: 7 startLocation x, y: 965, 990
+id: 9 startLocation x, y: 843, 307
+id: 10 startLocation x, y: 968, 114
+id: 8 startLocation x, y: 514, 458
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 595, y = 891
+myId: 5, id: 2 x = 26, y = 390
+myId: 5, id: 3 x = 761, y = 922
+myId: 5, id: 4 x = 403, y = 510
+myId: 5, id: 6 x = 509, y = 145
+myId: 5, id: 7 x = 965, y = 990
+myId: 5, id: 8 x = 514, y = 458
+myId: 5, id: 9 x = 843, y = 307
+myId: 5, id: 10 x = 968, y = 114
+myId: 0, id: 1 x = 595, y = 891
+myId: 0, id: 2 x = 26, y = 390
+myId: 0, id: 3 x = 761, y = 922
+myId: 0, id: 4 x = 403, y = 510
+myId: 0, id: 5 x = 460, y = 538
+myId: 0, id: 6 x = 509, y = 145
+myId: 0, id: 7 x = 965, y = 990
+myId: 3, id: 0 x = 68, y = 996
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 595, y = 891
+myId: 9, id: 2 x = 26, y = 390
+myId: 9, id: 3 x = 761, y = 922
+myId: 9, id: 4 x = 403, y = 510
+myId: 9, id: 5 x = 460, y = 538
+myId: 9, id: 6 x = 509, y = 145
+myId: 9, id: 7 x = 965, y = 990
+myId: 9, id: 8 x = 514, y = 458
+myId: 9, id: 10 x = 968, y = 114
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 595, y = 891
+myId: 2, id: 3 x = 761, y = 922
+myId: 2, id: 4 x = 403, y = 510
+myId: 2, id: 5 x = 460, y = 538
+myId: 2, id: 6 x = 509, y = 145
+myId: 2, id: 7 x = 965, y = 990
+myId: 2, id: 8 x = 514, y = 458
+myId: 2, id: 9 x = 843, y = 307
+myId: 2, id: 10 x = 968, y = 114
+myId: 1, id: 0 x = 68, y = 996
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 595, y = 891
+myId: 4, id: 2 x = 26, y = 390
+myId: 4, id: 3 x = 761, y = 922
+myId: 4, id: 5 x = 460, y = 538
+myId: 4, id: 6 x = 509, y = 145
+myId: 4, id: 7 x = 965, y = 990
+myId: 4, id: 8 x = 514, y = 458
+myId: 4, id: 9 x = 843, y = 307
+myId: 4, id: 10 x = 968, y = 114
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 595, y = 891
+myId: 10, id: 2 x = 26, y = 390
+myId: 10, id: 3 x = 761, y = 922
+myId: 10, id: 4 x = 403, y = 510
+myId: 10, id: 5 x = 460, y = 538
+myId: 10, id: 6 x = 509, y = 145
+myId: 10, id: 7 x = 965, y = 990
+myId: 10, id: 8 x = 514, y = 458
+myId: 10, id: 9 x = 843, y = 307
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 595, y = 891
+myId: 7, id: 2 x = 26, y = 390
+myId: 7, id: 3 x = 761, y = 922
+myId: 7, id: 4 x = 403, y = 510
+myId: 7, id: 5 x = 460, y = 538
+myId: 7, id: 6 x = 509, y = 145
+myId: 7, id: 8 x = 514, y = 458
+myId: 7, id: 9 x = 843, y = 307
+myId: 7, id: 10 x = 968, y = 114
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 595, y = 891
+myId: 6, id: 2 x = 26, y = 390
+myId: 6, id: 3 x = 761, y = 922
+myId: 6, id: 4 x = 403, y = 510
+myId: 6, id: 5 x = 460, y = 538
+myId: 6, id: 7 x = 965, y = 990
+myId: 6, id: 8 x = 514, y = 458
+myId: 6, id: 9 x = 843, y = 307
+myId: 6, id: 10 x = 968, y = 114
+myId: 3, id: 1 x = 595, y = 891
+myId: 3, id: 2 x = 26, y = 390
+myId: 3, id: 4 x = 403, y = 510
+myId: 3, id: 5 x = 460, y = 538
+myId: 3, id: 6 x = 509, y = 145
+myId: 3, id: 7 x = 965, y = 990
+myId: 3, id: 8 x = 514, y = 458
+myId: 3, id: 9 x = 843, y = 307
+myId: 3, id: 10 x = 968, y = 114
+myId: 1, id: 2 x = 26, y = 390
+myId: 1, id: 3 x = 761, y = 922
+myId: 1, id: 4 x = 403, y = 510
+myId: 1, id: 5 x = 460, y = 538
+myId: 1, id: 6 x = 509, y = 145
+myId: 1, id: 7 x = 965, y = 990
+myId: 1, id: 8 x = 514, y = 458
+myId: 1, id: 9 x = 843, y = 307
+myId: 1, id: 10 x = 968, y = 114
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 595, y = 891
+myId: 8, id: 2 x = 26, y = 390
+myId: 8, id: 3 x = 761, y = 922
+myId: 8, id: 4 x = 403, y = 510
+myId: 8, id: 5 x = 460, y = 538
+myId: 8, id: 6 x = 509, y = 145
+myId: 8, id: 7 x = 965, y = 990
+myId: 8, id: 9 x = 843, y = 307
+myId: 8, id: 10 x = 968, y = 114
+myId: 0, id: 8 x = 514, y = 458
+myId: 0, id: 9 x = 843, y = 307
+myId: 0, id: 10 x = 968, y = 114
+totalPacketsReceived 4, totalHops 10
+*****************************************************************************
+
+
+
+
+*****************************************************************************
+
+
+7. Test for 4 timesteps with around 14 nodes and 7 destination 
+	node. 260 transmission range, 12 packets buffer space and 25% space to be 
+	left for self generated packets.
+
+
+Result:
+	For this only 6 total packet transmissions happened in the system, and
+	6 of them reached the destination node and every node got the location
+	of other nodes correctly. 100% transmit/receive rate
+
+Output:
+*****************************************************************************
+
+
+uwo916@s360-peon7:~/cmpt434/a3/cmpt434-group10/asn3> ./DTN-sim 14 4 7 260 12 25
+id: 0 startLocation x, y: 68, 996
+id: 3 startLocation x, y: 595, 891
+id: 10 startLocation x, y: 26, 390
+id: 11 startLocation x, y: 761, 922
+id: 4 startLocation x, y: 965, 514
+id: 8 startLocation x, y: 122, 176
+id: 12 startLocation x, y: 509, 990
+id: 2 startLocation x, y: 145, 307
+id: 7 startLocation x, y: 968, 114
+id: 5 startLocation x, y: 843, 458
+id: 6 startLocation x, y: 223, 933
+id: 9 startLocation x, y: 550, 727
+id: 13 startLocation x, y: 460, 538
+id: 1 startLocation x, y: 403, 510
+waiting from here
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+All are waiting properly
+1 incremented the loopCounter to 4
+myId: 0, id: 1 x = 403, y = 510
+myId: 0, id: 2 x = 145, y = 307
+myId: 0, id: 3 x = 595, y = 891
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 403, y = 510
+myId: 7, id: 2 x = 145, y = 307
+myId: 13, id: 0 x = 68, y = 996
+myId: 13, id: 1 x = 403, y = 510
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 145, y = 307
+myId: 1, id: 3 x = 595, y = 891
+myId: 1, id: 4 x = 965, y = 514
+myId: 1, id: 5 x = 843, y = 458
+myId: 1, id: 6 x = 223, y = 933
+myId: 1, id: 7 x = 968, y = 114
+myId: 1, id: 8 x = 122, y = 176
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 403, y = 510
+myId: 10, id: 2 x = 145, y = 307
+myId: 10, id: 3 x = 595, y = 891
+myId: 10, id: 4 x = 965, y = 514
+myId: 10, id: 5 x = 843, y = 458
+myId: 10, id: 6 x = 223, y = 933
+myId: 10, id: 7 x = 968, y = 114
+myId: 10, id: 8 x = 122, y = 176
+myId: 10, id: 9 x = 550, y = 727
+myId: 10, id: 11 x = 761, y = 922
+myId: 10, id: 12 x = 509, y = 990
+myId: 10, id: 13 x = 460, y = 538
+myId: 13, id: 2 x = 145, y = 307
+myId: 13, id: 3 x = 595, y = 891
+myId: 13, id: 4 x = 965, y = 514
+myId: 13, id: 5 x = 843, y = 458
+myId: 13, id: 6 x = 223, y = 933
+myId: 13, id: 7 x = 968, y = 114
+myId: 13, id: 8 x = 122, y = 176
+myId: 13, id: 9 x = 550, y = 727
+myId: 13, id: 10 x = 26, y = 390
+myId: 13, id: 11 x = 761, y = 922
+myId: 13, id: 12 x = 509, y = 990
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 403, y = 510
+myId: 3, id: 2 x = 145, y = 307
+myId: 3, id: 4 x = 965, y = 514
+myId: 3, id: 5 x = 843, y = 458
+myId: 3, id: 6 x = 223, y = 933
+myId: 3, id: 7 x = 968, y = 114
+myId: 3, id: 8 x = 122, y = 176
+myId: 3, id: 9 x = 550, y = 727
+myId: 3, id: 10 x = 26, y = 390
+myId: 3, id: 11 x = 761, y = 922
+myId: 3, id: 12 x = 509, y = 990
+myId: 3, id: 13 x = 460, y = 538
+myId: 1, id: 9 x = 550, y = 727
+myId: 1, id: 10 x = 26, y = 390
+myId: 1, id: 11 x = 761, y = 922
+myId: 1, id: 12 x = 509, y = 990
+myId: 1, id: 13 x = 460, y = 538
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 403, y = 510
+myId: 8, id: 2 x = 145, y = 307
+myId: 8, id: 3 x = 595, y = 891
+myId: 8, id: 4 x = 965, y = 514
+myId: 8, id: 5 x = 843, y = 458
+myId: 8, id: 6 x = 223, y = 933
+myId: 8, id: 7 x = 968, y = 114
+myId: 8, id: 9 x = 550, y = 727
+myId: 8, id: 10 x = 26, y = 390
+myId: 8, id: 11 x = 761, y = 922
+myId: 8, id: 12 x = 509, y = 990
+myId: 8, id: 13 x = 460, y = 538
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 403, y = 510
+myId: 6, id: 2 x = 145, y = 307
+myId: 6, id: 3 x = 595, y = 891
+myId: 6, id: 4 x = 965, y = 514
+myId: 6, id: 5 x = 843, y = 458
+myId: 0, id: 4 x = 965, y = 514
+myId: 0, id: 5 x = 843, y = 458
+myId: 0, id: 6 x = 223, y = 933
+myId: 0, id: 7 x = 968, y = 114
+myId: 0, id: 8 x = 122, y = 176
+myId: 0, id: 9 x = 550, y = 727
+myId: 0, id: 10 x = 26, y = 390
+myId: 0, id: 11 x = 761, y = 922
+myId: 0, id: 12 x = 509, y = 990
+myId: 0, id: 13 x = 460, y = 538
+myId: 7, id: 3 x = 595, y = 891
+myId: 7, id: 4 x = 965, y = 514
+myId: 7, id: 5 x = 843, y = 458
+myId: 7, id: 6 x = 223, y = 933
+myId: 7, id: 8 x = 122, y = 176
+myId: 7, id: 9 x = 550, y = 727
+myId: 7, id: 10 x = 26, y = 390
+myId: 7, id: 11 x = 761, y = 922
+myId: 7, id: 12 x = 509, y = 990
+myId: 7, id: 13 x = 460, y = 538
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 403, y = 510
+myId: 12, id: 0 x = 68, y = 996
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 403, y = 510
+myId: 4, id: 2 x = 145, y = 307
+myId: 4, id: 3 x = 595, y = 891
+myId: 4, id: 5 x = 843, y = 458
+myId: 4, id: 6 x = 223, y = 933
+myId: 4, id: 7 x = 968, y = 114
+myId: 4, id: 8 x = 122, y = 176
+myId: 4, id: 9 x = 550, y = 727
+myId: 4, id: 10 x = 26, y = 390
+myId: 4, id: 11 x = 761, y = 922
+myId: 4, id: 12 x = 509, y = 990
+myId: 4, id: 13 x = 460, y = 538
+myId: 11, id: 0 x = 68, y = 996
+myId: 2, id: 3 x = 595, y = 891
+myId: 2, id: 4 x = 965, y = 514
+myId: 2, id: 5 x = 843, y = 458
+myId: 2, id: 6 x = 223, y = 933
+myId: 2, id: 7 x = 968, y = 114
+myId: 2, id: 8 x = 122, y = 176
+myId: 2, id: 9 x = 550, y = 727
+myId: 2, id: 10 x = 26, y = 390
+myId: 2, id: 11 x = 761, y = 922
+myId: 2, id: 12 x = 509, y = 990
+myId: 2, id: 13 x = 460, y = 538
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 403, y = 510
+myId: 5, id: 2 x = 145, y = 307
+myId: 5, id: 3 x = 595, y = 891
+myId: 5, id: 4 x = 965, y = 514
+myId: 5, id: 6 x = 223, y = 933
+myId: 11, id: 1 x = 403, y = 510
+myId: 12, id: 1 x = 403, y = 510
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 403, y = 510
+myId: 9, id: 2 x = 145, y = 307
+myId: 9, id: 3 x = 595, y = 891
+myId: 9, id: 4 x = 965, y = 514
+myId: 9, id: 5 x = 843, y = 458
+myId: 9, id: 6 x = 223, y = 933
+myId: 9, id: 7 x = 968, y = 114
+myId: 9, id: 8 x = 122, y = 176
+myId: 9, id: 10 x = 26, y = 390
+myId: 9, id: 11 x = 761, y = 922
+myId: 9, id: 12 x = 509, y = 990
+myId: 9, id: 13 x = 460, y = 538
+myId: 11, id: 2 x = 145, y = 307
+myId: 5, id: 7 x = 968, y = 114
+myId: 5, id: 8 x = 122, y = 176
+myId: 5, id: 9 x = 550, y = 727
+myId: 5, id: 10 x = 26, y = 390
+myId: 5, id: 11 x = 761, y = 922
+myId: 5, id: 12 x = 509, y = 990
+myId: 5, id: 13 x = 460, y = 538
+myId: 12, id: 2 x = 145, y = 307
+myId: 12, id: 3 x = 595, y = 891
+myId: 12, id: 4 x = 965, y = 514
+myId: 12, id: 5 x = 843, y = 458
+myId: 12, id: 6 x = 223, y = 933
+myId: 12, id: 7 x = 968, y = 114
+myId: 12, id: 8 x = 122, y = 176
+myId: 12, id: 9 x = 550, y = 727
+myId: 12, id: 10 x = 26, y = 390
+myId: 12, id: 11 x = 761, y = 922
+myId: 12, id: 13 x = 460, y = 538
+myId: 6, id: 7 x = 968, y = 114
+myId: 6, id: 8 x = 122, y = 176
+myId: 6, id: 9 x = 550, y = 727
+myId: 6, id: 10 x = 26, y = 390
+myId: 6, id: 11 x = 761, y = 922
+myId: 6, id: 12 x = 509, y = 990
+myId: 6, id: 13 x = 460, y = 538
+myId: 11, id: 3 x = 595, y = 891
+myId: 11, id: 4 x = 965, y = 514
+myId: 11, id: 5 x = 843, y = 458
+myId: 11, id: 6 x = 223, y = 933
+myId: 11, id: 7 x = 968, y = 114
+myId: 11, id: 8 x = 122, y = 176
+myId: 11, id: 9 x = 550, y = 727
+myId: 11, id: 10 x = 26, y = 390
+myId: 11, id: 12 x = 509, y = 990
+myId: 11, id: 13 x = 460, y = 538
+totalPacketsReceived 6, totalHops 6
+
+
+
+*****************************************************************************
+
+
+
+8. Test for 9 timesteps with around 20 nodes and 16 destination 
+	node. 160 transmission range, 14 packets buffer space and 20% space to be 
+	left for self generated packets.
+
+
+Result:
+	For this only 11 total packet transmissions happened in the system, and
+	11 of them reached the destination node and every node got the location
+	of other nodes correctly. 100% transmit/receive rate
+
+Output:
+*****************************************************************************
+
+
+uwo916@s360-peon7:~/cmpt434/a3/cmpt434-group10/asn3> ./DTN-sim 20 9 16 160 14 20
+id: 0 startLocation x, y: 68, 996
+id: 3 startLocation x, y: 595, 891
+id: 1 startLocation x, y: 509, 965
+id: 11 startLocation x, y: 933, 724
+id: 18 startLocation x, y: 761, 922
+id: 16 startLocation x, y: 403, 510
+id: 14 startLocation x, y: 990, 145
+id: 5 startLocation x, y: 843, 307
+id: 10 startLocation x, y: 514, 458
+id: 19 startLocation x, y: 26, 390
+id: 8 startLocation x, y: 114, 122
+id: 9 startLocation x, y: 550, 377
+id: 15 startLocation x, y: 727, 453
+id: 6 startLocation x, y: 33, 349
+id: 12 startLocation x, y: 176, 345
+id: 17 startLocation x, y: 324, 697
+id: 4 startLocation x, y: 968, 223
+id: 13 startLocation x, y: 66, 458
+id: 7 startLocation x, y: 998, 526
+id: 2 startLocation x, y: 460, 538
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+waiting from here
+1 incremented the loopCounter to 3
+All are waiting properly
+1 incremented the loopCounter to 4
+All are waiting properly
+1 incremented the loopCounter to 5
+All are waiting properly
+1 incremented the loopCounter to 6
+All are waiting properly
+1 incremented the loopCounter to 7
+All are waiting properly
+1 incremented the loopCounter to 8
+All are waiting properly
+waiting from here
+1 incremented the loopCounter to 9
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 509, y = 965
+myId: 7, id: 2 x = 460, y = 538
+myId: 7, id: 3 x = 595, y = 891
+myId: 16, id: 0 x = 68, y = 996
+myId: 16, id: 1 x = 509, y = 965
+myId: 16, id: 2 x = 460, y = 538
+myId: 16, id: 3 x = 595, y = 891
+myId: 19, id: 0 x = 68, y = 996
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 509, y = 965
+myId: 5, id: 2 x = 460, y = 538
+myId: 5, id: 3 x = 595, y = 891
+myId: 5, id: 4 x = 968, y = 223
+myId: 5, id: 6 x = 33, y = 349
+myId: 5, id: 7 x = 998, y = 526
+myId: 5, id: 8 x = 114, y = 122
+myId: 5, id: 9 x = 550, y = 377
+myId: 5, id: 10 x = 514, y = 458
+myId: 5, id: 11 x = 933, y = 724
+myId: 5, id: 12 x = 176, y = 345
+myId: 5, id: 13 x = 66, y = 458
+myId: 5, id: 14 x = 990, y = 145
+myId: 5, id: 15 x = 727, y = 453
+myId: 5, id: 16 x = 403, y = 510
+myId: 5, id: 17 x = 324, y = 697
+myId: 5, id: 18 x = 761, y = 922
+myId: 5, id: 19 x = 26, y = 390
+myId: 18, id: 0 x = 68, y = 996
+myId: 19, id: 1 x = 509, y = 965
+myId: 19, id: 2 x = 460, y = 538
+myId: 19, id: 3 x = 595, y = 891
+myId: 19, id: 4 x = 968, y = 223
+myId: 19, id: 5 x = 843, y = 307
+myId: 19, id: 6 x = 33, y = 349
+myId: 19, id: 7 x = 998, y = 526
+myId: 19, id: 8 x = 114, y = 122
+myId: 19, id: 9 x = 550, y = 377
+myId: 19, id: 10 x = 514, y = 458
+myId: 19, id: 11 x = 933, y = 724
+myId: 19, id: 12 x = 176, y = 345
+myId: 19, id: 13 x = 66, y = 458
+myId: 19, id: 14 x = 990, y = 145
+myId: 12, id: 0 x = 68, y = 996
+myId: 12, id: 1 x = 509, y = 965
+myId: 12, id: 2 x = 460, y = 538
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 509, y = 965
+myId: 4, id: 2 x = 460, y = 538
+myId: 4, id: 3 x = 595, y = 891
+myId: 4, id: 5 x = 843, y = 307
+myId: 4, id: 6 x = 33, y = 349
+myId: 4, id: 7 x = 998, y = 526
+myId: 4, id: 8 x = 114, y = 122
+myId: 4, id: 9 x = 550, y = 377
+myId: 4, id: 10 x = 514, y = 458
+myId: 4, id: 11 x = 933, y = 724
+myId: 4, id: 12 x = 176, y = 345
+myId: 4, id: 13 x = 66, y = 458
+myId: 4, id: 14 x = 990, y = 145
+myId: 4, id: 15 x = 727, y = 453
+myId: 4, id: 16 x = 403, y = 510
+myId: 4, id: 17 x = 324, y = 697
+myId: 4, id: 18 x = 761, y = 922
+myId: 4, id: 19 x = 26, y = 390
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 509, y = 965
+myId: 0, id: 1 x = 509, y = 965
+myId: 16, id: 4 x = 968, y = 223
+myId: 16, id: 5 x = 843, y = 307
+myId: 16, id: 6 x = 33, y = 349
+myId: 16, id: 7 x = 998, y = 526
+myId: 16, id: 8 x = 114, y = 122
+myId: 16, id: 9 x = 550, y = 377
+myId: 16, id: 10 x = 514, y = 458
+myId: 16, id: 11 x = 933, y = 724
+myId: 16, id: 12 x = 176, y = 345
+myId: 16, id: 13 x = 66, y = 458
+myId: 16, id: 14 x = 990, y = 145
+myId: 16, id: 15 x = 727, y = 453
+myId: 16, id: 17 x = 324, y = 697
+myId: 16, id: 18 x = 761, y = 922
+myId: 16, id: 19 x = 26, y = 390
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 509, y = 965
+myId: 8, id: 2 x = 460, y = 538
+myId: 8, id: 3 x = 595, y = 891
+myId: 8, id: 4 x = 968, y = 223
+myId: 8, id: 5 x = 843, y = 307
+myId: 8, id: 6 x = 33, y = 349
+myId: 8, id: 7 x = 998, y = 526
+myId: 8, id: 9 x = 550, y = 377
+myId: 8, id: 10 x = 514, y = 458
+myId: 18, id: 1 x = 509, y = 965
+myId: 18, id: 2 x = 460, y = 538
+myId: 18, id: 3 x = 595, y = 891
+myId: 18, id: 4 x = 968, y = 223
+myId: 18, id: 5 x = 843, y = 307
+myId: 18, id: 6 x = 33, y = 349
+myId: 18, id: 7 x = 998, y = 526
+myId: 18, id: 8 x = 114, y = 122
+myId: 18, id: 9 x = 550, y = 377
+myId: 18, id: 10 x = 514, y = 458
+myId: 18, id: 11 x = 933, y = 724
+myId: 18, id: 12 x = 176, y = 345
+myId: 18, id: 13 x = 66, y = 458
+myId: 18, id: 14 x = 990, y = 145
+myId: 18, id: 15 x = 727, y = 453
+myId: 18, id: 16 x = 403, y = 510
+myId: 18, id: 17 x = 324, y = 697
+myId: 18, id: 19 x = 26, y = 390
+myId: 19, id: 15 x = 727, y = 453
+myId: 19, id: 16 x = 403, y = 510
+myId: 19, id: 17 x = 324, y = 697
+myId: 19, id: 18 x = 761, y = 922
+myId: 12, id: 3 x = 595, y = 891
+myId: 12, id: 4 x = 968, y = 223
+myId: 12, id: 5 x = 843, y = 307
+myId: 12, id: 6 x = 33, y = 349
+myId: 12, id: 7 x = 998, y = 526
+myId: 12, id: 8 x = 114, y = 122
+myId: 12, id: 9 x = 550, y = 377
+myId: 12, id: 10 x = 514, y = 458
+myId: 12, id: 11 x = 933, y = 724
+myId: 12, id: 13 x = 66, y = 458
+myId: 12, id: 14 x = 990, y = 145
+myId: 12, id: 15 x = 727, y = 453
+myId: 12, id: 16 x = 403, y = 510
+myId: 12, id: 17 x = 324, y = 697
+myId: 12, id: 18 x = 761, y = 922
+myId: 12, id: 19 x = 26, y = 390
+myId: 13, id: 0 x = 68, y = 996
+myId: 13, id: 1 x = 509, y = 965
+myId: 13, id: 2 x = 460, y = 538
+myId: 13, id: 3 x = 595, y = 891
+myId: 13, id: 4 x = 968, y = 223
+myId: 13, id: 5 x = 843, y = 307
+myId: 13, id: 6 x = 33, y = 349
+myId: 13, id: 7 x = 998, y = 526
+myId: 13, id: 8 x = 114, y = 122
+myId: 13, id: 9 x = 550, y = 377
+myId: 13, id: 10 x = 514, y = 458
+myId: 13, id: 11 x = 933, y = 724
+myId: 13, id: 12 x = 176, y = 345
+myId: 13, id: 14 x = 990, y = 145
+myId: 13, id: 15 x = 727, y = 453
+myId: 13, id: 16 x = 403, y = 510
+myId: 13, id: 17 x = 324, y = 697
+myId: 13, id: 18 x = 761, y = 922
+myId: 13, id: 19 x = 26, y = 390
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 509, y = 965
+myId: 3, id: 2 x = 460, y = 538
+myId: 3, id: 4 x = 968, y = 223
+myId: 3, id: 5 x = 843, y = 307
+myId: 3, id: 6 x = 33, y = 349
+myId: 3, id: 7 x = 998, y = 526
+myId: 3, id: 8 x = 114, y = 122
+myId: 3, id: 9 x = 550, y = 377
+myId: 3, id: 10 x = 514, y = 458
+myId: 3, id: 11 x = 933, y = 724
+myId: 3, id: 12 x = 176, y = 345
+myId: 3, id: 13 x = 66, y = 458
+myId: 3, id: 14 x = 990, y = 145
+myId: 3, id: 15 x = 727, y = 453
+myId: 3, id: 16 x = 403, y = 510
+myId: 3, id: 17 x = 324, y = 697
+myId: 3, id: 18 x = 761, y = 922
+myId: 3, id: 19 x = 26, y = 390
+myId: 7, id: 4 x = 968, y = 223
+myId: 7, id: 5 x = 843, y = 307
+myId: 7, id: 6 x = 33, y = 349
+myId: 7, id: 8 x = 114, y = 122
+myId: 7, id: 9 x = 550, y = 377
+myId: 7, id: 10 x = 514, y = 458
+myId: 7, id: 11 x = 933, y = 724
+myId: 7, id: 12 x = 176, y = 345
+myId: 7, id: 13 x = 66, y = 458
+myId: 7, id: 14 x = 990, y = 145
+myId: 7, id: 15 x = 727, y = 453
+myId: 7, id: 16 x = 403, y = 510
+myId: 7, id: 17 x = 324, y = 697
+myId: 7, id: 18 x = 761, y = 922
+myId: 7, id: 19 x = 26, y = 390
+myId: 8, id: 11 x = 933, y = 724
+myId: 8, id: 12 x = 176, y = 345
+myId: 8, id: 13 x = 66, y = 458
+myId: 8, id: 14 x = 990, y = 145
+myId: 8, id: 15 x = 727, y = 453
+myId: 8, id: 16 x = 403, y = 510
+myId: 8, id: 17 x = 324, y = 697
+myId: 8, id: 18 x = 761, y = 922
+myId: 8, id: 19 x = 26, y = 390
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 460, y = 538
+myId: 1, id: 3 x = 595, y = 891
+myId: 1, id: 4 x = 968, y = 223
+myId: 1, id: 5 x = 843, y = 307
+myId: 1, id: 6 x = 33, y = 349
+myId: 1, id: 7 x = 998, y = 526
+myId: 1, id: 8 x = 114, y = 122
+myId: 1, id: 9 x = 550, y = 377
+myId: 1, id: 10 x = 514, y = 458
+myId: 15, id: 0 x = 68, y = 996
+myId: 15, id: 1 x = 509, y = 965
+myId: 15, id: 2 x = 460, y = 538
+myId: 15, id: 3 x = 595, y = 891
+myId: 15, id: 4 x = 968, y = 223
+myId: 15, id: 5 x = 843, y = 307
+myId: 15, id: 6 x = 33, y = 349
+myId: 0, id: 2 x = 460, y = 538
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 509, y = 965
+myId: 6, id: 2 x = 460, y = 538
+myId: 9, id: 2 x = 460, y = 538
+myId: 9, id: 3 x = 595, y = 891
+myId: 9, id: 4 x = 968, y = 223
+myId: 9, id: 5 x = 843, y = 307
+myId: 9, id: 6 x = 33, y = 349
+myId: 9, id: 7 x = 998, y = 526
+myId: 9, id: 8 x = 114, y = 122
+myId: 9, id: 10 x = 514, y = 458
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 509, y = 965
+myId: 2, id: 3 x = 595, y = 891
+myId: 2, id: 4 x = 968, y = 223
+myId: 17, id: 0 x = 68, y = 996
+myId: 17, id: 1 x = 509, y = 965
+myId: 17, id: 2 x = 460, y = 538
+myId: 14, id: 0 x = 68, y = 996
+myId: 14, id: 1 x = 509, y = 965
+myId: 14, id: 2 x = 460, y = 538
+myId: 14, id: 3 x = 595, y = 891
+myId: 14, id: 4 x = 968, y = 223
+myId: 14, id: 5 x = 843, y = 307
+myId: 14, id: 6 x = 33, y = 349
+myId: 14, id: 7 x = 998, y = 526
+myId: 14, id: 8 x = 114, y = 122
+myId: 14, id: 9 x = 550, y = 377
+myId: 14, id: 10 x = 514, y = 458
+myId: 14, id: 11 x = 933, y = 724
+myId: 14, id: 12 x = 176, y = 345
+myId: 14, id: 13 x = 66, y = 458
+myId: 14, id: 15 x = 727, y = 453
+myId: 14, id: 16 x = 403, y = 510
+myId: 14, id: 17 x = 324, y = 697
+myId: 14, id: 18 x = 761, y = 922
+myId: 14, id: 19 x = 26, y = 390
+myId: 15, id: 7 x = 998, y = 526
+myId: 15, id: 8 x = 114, y = 122
+myId: 15, id: 9 x = 550, y = 377
+myId: 15, id: 10 x = 514, y = 458
+myId: 15, id: 11 x = 933, y = 724
+myId: 15, id: 12 x = 176, y = 345
+myId: 15, id: 13 x = 66, y = 458
+myId: 15, id: 14 x = 990, y = 145
+myId: 15, id: 16 x = 403, y = 510
+myId: 15, id: 17 x = 324, y = 697
+myId: 15, id: 18 x = 761, y = 922
+myId: 15, id: 19 x = 26, y = 390
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 509, y = 965
+myId: 10, id: 2 x = 460, y = 538
+myId: 10, id: 3 x = 595, y = 891
+myId: 10, id: 4 x = 968, y = 223
+myId: 10, id: 5 x = 843, y = 307
+myId: 10, id: 6 x = 33, y = 349
+myId: 10, id: 7 x = 998, y = 526
+myId: 10, id: 8 x = 114, y = 122
+myId: 10, id: 9 x = 550, y = 377
+myId: 10, id: 11 x = 933, y = 724
+myId: 10, id: 12 x = 176, y = 345
+myId: 10, id: 13 x = 66, y = 458
+myId: 10, id: 14 x = 990, y = 145
+myId: 10, id: 15 x = 727, y = 453
+myId: 10, id: 16 x = 403, y = 510
+myId: 10, id: 17 x = 324, y = 697
+myId: 10, id: 18 x = 761, y = 922
+myId: 10, id: 19 x = 26, y = 390
+myId: 9, id: 11 x = 933, y = 724
+myId: 9, id: 12 x = 176, y = 345
+myId: 9, id: 13 x = 66, y = 458
+myId: 9, id: 14 x = 990, y = 145
+myId: 0, id: 3 x = 595, y = 891
+myId: 0, id: 4 x = 968, y = 223
+myId: 0, id: 5 x = 843, y = 307
+myId: 0, id: 6 x = 33, y = 349
+myId: 0, id: 7 x = 998, y = 526
+myId: 0, id: 8 x = 114, y = 122
+myId: 0, id: 9 x = 550, y = 377
+myId: 0, id: 10 x = 514, y = 458
+myId: 0, id: 11 x = 933, y = 724
+myId: 0, id: 12 x = 176, y = 345
+myId: 0, id: 13 x = 66, y = 458
+myId: 0, id: 14 x = 990, y = 145
+myId: 0, id: 15 x = 727, y = 453
+myId: 0, id: 16 x = 403, y = 510
+myId: 0, id: 17 x = 324, y = 697
+myId: 0, id: 18 x = 761, y = 922
+myId: 0, id: 19 x = 26, y = 390
+myId: 9, id: 15 x = 727, y = 453
+myId: 9, id: 16 x = 403, y = 510
+myId: 9, id: 17 x = 324, y = 697
+myId: 9, id: 18 x = 761, y = 922
+myId: 9, id: 19 x = 26, y = 390
+myId: 17, id: 3 x = 595, y = 891
+myId: 17, id: 4 x = 968, y = 223
+myId: 17, id: 5 x = 843, y = 307
+myId: 17, id: 6 x = 33, y = 349
+myId: 17, id: 7 x = 998, y = 526
+myId: 17, id: 8 x = 114, y = 122
+myId: 17, id: 9 x = 550, y = 377
+myId: 17, id: 10 x = 514, y = 458
+myId: 17, id: 11 x = 933, y = 724
+myId: 17, id: 12 x = 176, y = 345
+myId: 17, id: 13 x = 66, y = 458
+myId: 17, id: 14 x = 990, y = 145
+myId: 17, id: 15 x = 727, y = 453
+myId: 17, id: 16 x = 403, y = 510
+myId: 17, id: 18 x = 761, y = 922
+myId: 17, id: 19 x = 26, y = 390
+myId: 11, id: 0 x = 68, y = 996
+myId: 11, id: 1 x = 509, y = 965
+myId: 11, id: 2 x = 460, y = 538
+myId: 11, id: 3 x = 595, y = 891
+myId: 11, id: 4 x = 968, y = 223
+myId: 11, id: 5 x = 843, y = 307
+myId: 11, id: 6 x = 33, y = 349
+myId: 11, id: 7 x = 998, y = 526
+myId: 11, id: 8 x = 114, y = 122
+myId: 11, id: 9 x = 550, y = 377
+myId: 11, id: 10 x = 514, y = 458
+myId: 11, id: 12 x = 176, y = 345
+myId: 11, id: 13 x = 66, y = 458
+myId: 11, id: 14 x = 990, y = 145
+myId: 11, id: 15 x = 727, y = 453
+myId: 11, id: 16 x = 403, y = 510
+myId: 11, id: 17 x = 324, y = 697
+myId: 11, id: 18 x = 761, y = 922
+myId: 11, id: 19 x = 26, y = 390
+myId: 2, id: 5 x = 843, y = 307
+myId: 2, id: 6 x = 33, y = 349
+myId: 2, id: 7 x = 998, y = 526
+myId: 2, id: 8 x = 114, y = 122
+myId: 2, id: 9 x = 550, y = 377
+myId: 1, id: 11 x = 933, y = 724
+myId: 1, id: 12 x = 176, y = 345
+myId: 6, id: 3 x = 595, y = 891
+myId: 6, id: 4 x = 968, y = 223
+myId: 6, id: 5 x = 843, y = 307
+myId: 2, id: 10 x = 514, y = 458
+myId: 2, id: 11 x = 933, y = 724
+myId: 2, id: 12 x = 176, y = 345
+myId: 2, id: 13 x = 66, y = 458
+myId: 2, id: 14 x = 990, y = 145
+myId: 2, id: 15 x = 727, y = 453
+myId: 2, id: 16 x = 403, y = 510
+myId: 2, id: 17 x = 324, y = 697
+myId: 2, id: 18 x = 761, y = 922
+myId: 2, id: 19 x = 26, y = 390
+myId: 1, id: 13 x = 66, y = 458
+myId: 1, id: 14 x = 990, y = 145
+myId: 1, id: 15 x = 727, y = 453
+myId: 1, id: 16 x = 403, y = 510
+myId: 1, id: 17 x = 324, y = 697
+myId: 1, id: 18 x = 761, y = 922
+myId: 1, id: 19 x = 26, y = 390
+myId: 6, id: 7 x = 998, y = 526
+myId: 6, id: 8 x = 114, y = 122
+myId: 6, id: 9 x = 550, y = 377
+myId: 6, id: 10 x = 514, y = 458
+myId: 6, id: 11 x = 933, y = 724
+myId: 6, id: 12 x = 176, y = 345
+myId: 6, id: 13 x = 66, y = 458
+myId: 6, id: 14 x = 990, y = 145
+myId: 6, id: 15 x = 727, y = 453
+myId: 6, id: 16 x = 403, y = 510
+myId: 6, id: 17 x = 324, y = 697
+myId: 6, id: 18 x = 761, y = 922
+myId: 6, id: 19 x = 26, y = 390
+totalPacketsReceived 11, totalHops 11
+
+
+*****************************************************************************
+
+
+
+
+9. Test for 9 timesteps with around 35 nodes and 16 destination 
+	node. 100 transmission range, 14 packets buffer space and 25% space to be 
+	left for self generated packets.
+
+
+Result:
+	For this only 11 total packet transmissions happened in the system, and
+	11 of them reached the destination node and every node got the location
+	of other nodes correctly. 100% transmit/receive rate
+
+Output:
+*****************************************************************************
+
+uwo916@s360-peon7:~/cmpt434/a3/cmpt434-group10/asn3> ./DTN-sim 20 9 16 100 14 20
+id: 0 startLocation x, y: 68, 996
+id: 16 startLocation x, y: 595, 891
+id: 4 startLocation x, y: 26, 390
+id: 6 startLocation x, y: 727, 122
+id: 5 startLocation x, y: 460, 509
+id: 15 startLocation x, y: 403, 990
+id: 12 startLocation x, y: 510, 843
+id: 2 startLocation x, y: 965, 968
+id: 3 startLocation x, y: 538, 145
+id: 1 startLocation x, y: 514, 223
+id: 19 startLocation x, y: 458, 550
+id: 11 startLocation x, y: 176, 33
+id: 18 startLocation x, y: 307, 933
+id: 13 startLocation x, y: 761, 922
+id: 9 startLocation x, y: 377, 453
+id: 14 startLocation x, y: 114, 345
+id: 7 startLocation x, y: 324, 724
+id: 8 startLocation x, y: 349, 66
+id: 10 startLocation x, y: 697, 458
+id: 17 startLocation x, y: 998, 526
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+All are waiting properly
+waiting from here
+1 incremented the loopCounter to 4
+All are waiting properly
+1 incremented the loopCounter to 5
+All are waiting properly
+1 incremented the loopCounter to 6
+All are waiting properly
+1 incremented the loopCounter to 7
+All are waiting properly
+1 incremented the loopCounter to 8
+All are waiting properly
+1 incremented the loopCounter to 9
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 514, y = 223
+myId: 6, id: 2 x = 965, y = 968
+myId: 6, id: 3 x = 538, y = 145
+myId: 3, id: 0 x = 68, y = 996
+myId: 11, id: 0 x = 68, y = 996
+myId: 19, id: 0 x = 68, y = 996
+myId: 19, id: 1 x = 514, y = 223
+myId: 4, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 514, y = 223
+myId: 14, id: 0 x = 68, y = 996
+myId: 14, id: 1 x = 514, y = 223
+myId: 14, id: 2 x = 965, y = 968
+myId: 14, id: 3 x = 538, y = 145
+myId: 14, id: 4 x = 26, y = 390
+myId: 14, id: 5 x = 460, y = 509
+myId: 14, id: 6 x = 727, y = 122
+myId: 14, id: 7 x = 324, y = 724
+myId: 14, id: 8 x = 349, y = 66
+myId: 14, id: 9 x = 377, y = 453
+myId: 14, id: 10 x = 697, y = 458
+myId: 14, id: 11 x = 176, y = 33
+myId: 14, id: 12 x = 510, y = 843
+myId: 14, id: 13 x = 761, y = 922
+myId: 14, id: 15 x = 403, y = 990
+myId: 14, id: 16 x = 595, y = 891
+myId: 14, id: 17 x = 998, y = 526
+myId: 14, id: 18 x = 307, y = 933
+myId: 14, id: 19 x = 458, y = 550
+myId: 12, id: 0 x = 68, y = 996
+myId: 12, id: 1 x = 514, y = 223
+myId: 12, id: 2 x = 965, y = 968
+myId: 12, id: 3 x = 538, y = 145
+myId: 12, id: 4 x = 26, y = 390
+myId: 12, id: 5 x = 460, y = 509
+myId: 12, id: 6 x = 727, y = 122
+myId: 12, id: 7 x = 324, y = 724
+myId: 12, id: 8 x = 349, y = 66
+myId: 12, id: 9 x = 377, y = 453
+myId: 12, id: 10 x = 697, y = 458
+myId: 12, id: 11 x = 176, y = 33
+myId: 12, id: 13 x = 761, y = 922
+myId: 12, id: 14 x = 114, y = 345
+myId: 12, id: 15 x = 403, y = 990
+myId: 12, id: 16 x = 595, y = 891
+myId: 12, id: 17 x = 998, y = 526
+myId: 12, id: 18 x = 307, y = 933
+myId: 12, id: 19 x = 458, y = 550
+myId: 0, id: 1 x = 514, y = 223
+myId: 0, id: 2 x = 965, y = 968
+myId: 0, id: 3 x = 538, y = 145
+myId: 0, id: 4 x = 26, y = 390
+myId: 0, id: 5 x = 460, y = 509
+myId: 0, id: 6 x = 727, y = 122
+myId: 0, id: 7 x = 324, y = 724
+myId: 0, id: 8 x = 349, y = 66
+myId: 0, id: 9 x = 377, y = 453
+myId: 0, id: 10 x = 697, y = 458
+myId: 0, id: 11 x = 176, y = 33
+myId: 0, id: 12 x = 510, y = 843
+myId: 0, id: 13 x = 761, y = 922
+myId: 0, id: 14 x = 114, y = 345
+myId: 0, id: 15 x = 403, y = 990
+myId: 0, id: 16 x = 595, y = 891
+myId: 0, id: 17 x = 998, y = 526
+myId: 0, id: 18 x = 307, y = 933
+myId: 0, id: 19 x = 458, y = 550
+myId: 18, id: 0 x = 68, y = 996
+myId: 18, id: 1 x = 514, y = 223
+myId: 18, id: 2 x = 965, y = 968
+myId: 18, id: 3 x = 538, y = 145
+myId: 18, id: 4 x = 26, y = 390
+myId: 18, id: 5 x = 460, y = 509
+myId: 18, id: 6 x = 727, y = 122
+myId: 18, id: 7 x = 324, y = 724
+myId: 18, id: 8 x = 349, y = 66
+myId: 18, id: 9 x = 377, y = 453
+myId: 18, id: 10 x = 697, y = 458
+myId: 18, id: 11 x = 176, y = 33
+myId: 18, id: 12 x = 510, y = 843
+myId: 18, id: 13 x = 761, y = 922
+myId: 18, id: 14 x = 114, y = 345
+myId: 18, id: 15 x = 403, y = 990
+myId: 18, id: 16 x = 595, y = 891
+myId: 18, id: 17 x = 998, y = 526
+myId: 18, id: 19 x = 458, y = 550
+myId: 15, id: 0 x = 68, y = 996
+myId: 15, id: 1 x = 514, y = 223
+myId: 15, id: 2 x = 965, y = 968
+myId: 19, id: 2 x = 965, y = 968
+myId: 19, id: 3 x = 538, y = 145
+myId: 19, id: 4 x = 26, y = 390
+myId: 19, id: 5 x = 460, y = 509
+myId: 19, id: 6 x = 727, y = 122
+myId: 19, id: 7 x = 324, y = 724
+myId: 19, id: 8 x = 349, y = 66
+myId: 19, id: 9 x = 377, y = 453
+myId: 19, id: 10 x = 697, y = 458
+myId: 19, id: 11 x = 176, y = 33
+myId: 19, id: 12 x = 510, y = 843
+myId: 19, id: 13 x = 761, y = 922
+myId: 19, id: 14 x = 114, y = 345
+myId: 19, id: 15 x = 403, y = 990
+myId: 19, id: 16 x = 595, y = 891
+myId: 19, id: 17 x = 998, y = 526
+myId: 19, id: 18 x = 307, y = 933
+myId: 5, id: 0 x = 68, y = 996
+myId: 3, id: 2 x = 965, y = 968
+myId: 5, id: 1 x = 514, y = 223
+myId: 5, id: 2 x = 965, y = 968
+myId: 5, id: 3 x = 538, y = 145
+myId: 5, id: 4 x = 26, y = 390
+myId: 5, id: 6 x = 727, y = 122
+myId: 5, id: 7 x = 324, y = 724
+myId: 5, id: 8 x = 349, y = 66
+myId: 5, id: 9 x = 377, y = 453
+myId: 5, id: 10 x = 697, y = 458
+myId: 5, id: 11 x = 176, y = 33
+myId: 5, id: 12 x = 510, y = 843
+myId: 5, id: 13 x = 761, y = 922
+myId: 5, id: 14 x = 114, y = 345
+myId: 5, id: 15 x = 403, y = 990
+myId: 5, id: 16 x = 595, y = 891
+myId: 5, id: 17 x = 998, y = 526
+myId: 5, id: 18 x = 307, y = 933
+myId: 5, id: 19 x = 458, y = 550
+myId: 13, id: 0 x = 68, y = 996
+myId: 10, id: 0 x = 68, y = 996
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 514, y = 223
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 514, y = 223
+myId: 9, id: 2 x = 965, y = 968
+myId: 9, id: 3 x = 538, y = 145
+myId: 9, id: 4 x = 26, y = 390
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 965, y = 968
+myId: 1, id: 3 x = 538, y = 145
+myId: 1, id: 4 x = 26, y = 390
+myId: 1, id: 5 x = 460, y = 509
+myId: 4, id: 1 x = 514, y = 223
+myId: 4, id: 2 x = 965, y = 968
+myId: 4, id: 3 x = 538, y = 145
+myId: 4, id: 5 x = 460, y = 509
+myId: 4, id: 6 x = 727, y = 122
+myId: 4, id: 7 x = 324, y = 724
+myId: 4, id: 8 x = 349, y = 66
+myId: 4, id: 9 x = 377, y = 453
+myId: 4, id: 10 x = 697, y = 458
+myId: 4, id: 11 x = 176, y = 33
+myId: 4, id: 12 x = 510, y = 843
+myId: 11, id: 1 x = 514, y = 223
+myId: 11, id: 2 x = 965, y = 968
+myId: 11, id: 3 x = 538, y = 145
+myId: 10, id: 1 x = 514, y = 223
+myId: 11, id: 4 x = 26, y = 390
+myId: 11, id: 5 x = 460, y = 509
+myId: 6, id: 4 x = 26, y = 390
+myId: 6, id: 5 x = 460, y = 509
+myId: 6, id: 7 x = 324, y = 724
+myId: 6, id: 8 x = 349, y = 66
+myId: 6, id: 9 x = 377, y = 453
+myId: 6, id: 10 x = 697, y = 458
+myId: 6, id: 11 x = 176, y = 33
+myId: 6, id: 12 x = 510, y = 843
+myId: 6, id: 13 x = 761, y = 922
+myId: 6, id: 14 x = 114, y = 345
+myId: 6, id: 15 x = 403, y = 990
+myId: 6, id: 16 x = 595, y = 891
+myId: 6, id: 17 x = 998, y = 526
+myId: 6, id: 18 x = 307, y = 933
+myId: 6, id: 19 x = 458, y = 550
+myId: 4, id: 13 x = 761, y = 922
+myId: 4, id: 14 x = 114, y = 345
+myId: 4, id: 15 x = 403, y = 990
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 514, y = 223
+myId: 2, id: 3 x = 538, y = 145
+myId: 2, id: 4 x = 26, y = 390
+myId: 2, id: 5 x = 460, y = 509
+myId: 2, id: 6 x = 727, y = 122
+myId: 10, id: 2 x = 965, y = 968
+myId: 10, id: 3 x = 538, y = 145
+myId: 10, id: 4 x = 26, y = 390
+myId: 10, id: 5 x = 460, y = 509
+myId: 9, id: 5 x = 460, y = 509
+myId: 9, id: 6 x = 727, y = 122
+myId: 9, id: 7 x = 324, y = 724
+myId: 9, id: 8 x = 349, y = 66
+myId: 9, id: 10 x = 697, y = 458
+myId: 9, id: 11 x = 176, y = 33
+myId: 9, id: 12 x = 510, y = 843
+myId: 9, id: 13 x = 761, y = 922
+myId: 9, id: 14 x = 114, y = 345
+myId: 9, id: 15 x = 403, y = 990
+myId: 9, id: 16 x = 595, y = 891
+myId: 9, id: 17 x = 998, y = 526
+myId: 9, id: 18 x = 307, y = 933
+myId: 9, id: 19 x = 458, y = 550
+myId: 15, id: 3 x = 538, y = 145
+myId: 15, id: 4 x = 26, y = 390
+myId: 15, id: 5 x = 460, y = 509
+myId: 15, id: 6 x = 727, y = 122
+myId: 15, id: 7 x = 324, y = 724
+myId: 16, id: 0 x = 68, y = 996
+myId: 4, id: 16 x = 595, y = 891
+myId: 4, id: 17 x = 998, y = 526
+myId: 4, id: 18 x = 307, y = 933
+myId: 4, id: 19 x = 458, y = 550
+myId: 7, id: 2 x = 965, y = 968
+myId: 7, id: 3 x = 538, y = 145
+myId: 7, id: 4 x = 26, y = 390
+myId: 7, id: 5 x = 460, y = 509
+myId: 7, id: 6 x = 727, y = 122
+myId: 17, id: 0 x = 68, y = 996
+myId: 17, id: 1 x = 514, y = 223
+myId: 17, id: 2 x = 965, y = 968
+myId: 17, id: 3 x = 538, y = 145
+myId: 17, id: 4 x = 26, y = 390
+myId: 17, id: 5 x = 460, y = 509
+myId: 17, id: 6 x = 727, y = 122
+myId: 17, id: 7 x = 324, y = 724
+myId: 17, id: 8 x = 349, y = 66
+myId: 17, id: 9 x = 377, y = 453
+myId: 17, id: 10 x = 697, y = 458
+myId: 17, id: 11 x = 176, y = 33
+myId: 17, id: 12 x = 510, y = 843
+myId: 17, id: 13 x = 761, y = 922
+myId: 17, id: 14 x = 114, y = 345
+myId: 17, id: 15 x = 403, y = 990
+myId: 17, id: 16 x = 595, y = 891
+myId: 17, id: 18 x = 307, y = 933
+myId: 17, id: 19 x = 458, y = 550
+myId: 13, id: 1 x = 514, y = 223
+myId: 13, id: 2 x = 965, y = 968
+myId: 13, id: 3 x = 538, y = 145
+myId: 13, id: 4 x = 26, y = 390
+myId: 13, id: 5 x = 460, y = 509
+myId: 13, id: 6 x = 727, y = 122
+myId: 13, id: 7 x = 324, y = 724
+myId: 13, id: 8 x = 349, y = 66
+myId: 13, id: 9 x = 377, y = 453
+myId: 13, id: 10 x = 697, y = 458
+myId: 13, id: 11 x = 176, y = 33
+myId: 13, id: 12 x = 510, y = 843
+myId: 13, id: 14 x = 114, y = 345
+myId: 13, id: 15 x = 403, y = 990
+myId: 13, id: 16 x = 595, y = 891
+myId: 3, id: 4 x = 26, y = 390
+myId: 1, id: 6 x = 727, y = 122
+myId: 1, id: 7 x = 324, y = 724
+myId: 1, id: 8 x = 349, y = 66
+myId: 1, id: 9 x = 377, y = 453
+myId: 1, id: 10 x = 697, y = 458
+myId: 1, id: 11 x = 176, y = 33
+myId: 1, id: 12 x = 510, y = 843
+myId: 1, id: 13 x = 761, y = 922
+myId: 1, id: 14 x = 114, y = 345
+myId: 1, id: 15 x = 403, y = 990
+myId: 1, id: 16 x = 595, y = 891
+myId: 1, id: 17 x = 998, y = 526
+myId: 1, id: 18 x = 307, y = 933
+myId: 1, id: 19 x = 458, y = 550
+myId: 7, id: 8 x = 349, y = 66
+myId: 7, id: 9 x = 377, y = 453
+myId: 7, id: 10 x = 697, y = 458
+myId: 7, id: 11 x = 176, y = 33
+myId: 7, id: 12 x = 510, y = 843
+myId: 7, id: 13 x = 761, y = 922
+myId: 7, id: 14 x = 114, y = 345
+myId: 7, id: 15 x = 403, y = 990
+myId: 7, id: 16 x = 595, y = 891
+myId: 7, id: 17 x = 998, y = 526
+myId: 7, id: 18 x = 307, y = 933
+myId: 7, id: 19 x = 458, y = 550
+myId: 11, id: 6 x = 727, y = 122
+myId: 11, id: 7 x = 324, y = 724
+myId: 11, id: 8 x = 349, y = 66
+myId: 11, id: 9 x = 377, y = 453
+myId: 11, id: 10 x = 697, y = 458
+myId: 11, id: 12 x = 510, y = 843
+myId: 11, id: 13 x = 761, y = 922
+myId: 11, id: 14 x = 114, y = 345
+myId: 11, id: 15 x = 403, y = 990
+myId: 11, id: 16 x = 595, y = 891
+myId: 11, id: 17 x = 998, y = 526
+myId: 11, id: 18 x = 307, y = 933
+myId: 11, id: 19 x = 458, y = 550
+myId: 3, id: 5 x = 460, y = 509
+myId: 3, id: 6 x = 727, y = 122
+myId: 3, id: 7 x = 324, y = 724
+myId: 3, id: 8 x = 349, y = 66
+myId: 3, id: 9 x = 377, y = 453
+myId: 3, id: 10 x = 697, y = 458
+myId: 3, id: 11 x = 176, y = 33
+myId: 3, id: 12 x = 510, y = 843
+myId: 3, id: 13 x = 761, y = 922
+myId: 3, id: 14 x = 114, y = 345
+myId: 3, id: 15 x = 403, y = 990
+myId: 3, id: 16 x = 595, y = 891
+myId: 3, id: 17 x = 998, y = 526
+myId: 3, id: 18 x = 307, y = 933
+myId: 3, id: 19 x = 458, y = 550
+myId: 13, id: 17 x = 998, y = 526
+myId: 13, id: 18 x = 307, y = 933
+myId: 13, id: 19 x = 458, y = 550
+myId: 15, id: 8 x = 349, y = 66
+myId: 15, id: 9 x = 377, y = 453
+myId: 16, id: 1 x = 514, y = 223
+myId: 16, id: 2 x = 965, y = 968
+myId: 16, id: 3 x = 538, y = 145
+myId: 8, id: 0 x = 68, y = 996
+myId: 8, id: 1 x = 514, y = 223
+myId: 8, id: 2 x = 965, y = 968
+myId: 8, id: 3 x = 538, y = 145
+myId: 8, id: 4 x = 26, y = 390
+myId: 2, id: 7 x = 324, y = 724
+myId: 15, id: 10 x = 697, y = 458
+myId: 16, id: 4 x = 26, y = 390
+myId: 8, id: 5 x = 460, y = 509
+myId: 8, id: 6 x = 727, y = 122
+myId: 8, id: 7 x = 324, y = 724
+myId: 8, id: 9 x = 377, y = 453
+myId: 16, id: 5 x = 460, y = 509
+myId: 10, id: 6 x = 727, y = 122
+myId: 2, id: 8 x = 349, y = 66
+myId: 2, id: 9 x = 377, y = 453
+myId: 8, id: 10 x = 697, y = 458
+myId: 16, id: 6 x = 727, y = 122
+myId: 16, id: 7 x = 324, y = 724
+myId: 16, id: 8 x = 349, y = 66
+myId: 16, id: 9 x = 377, y = 453
+myId: 16, id: 10 x = 697, y = 458
+myId: 16, id: 11 x = 176, y = 33
+myId: 16, id: 12 x = 510, y = 843
+myId: 16, id: 13 x = 761, y = 922
+myId: 16, id: 14 x = 114, y = 345
+myId: 16, id: 15 x = 403, y = 990
+myId: 15, id: 11 x = 176, y = 33
+myId: 15, id: 12 x = 510, y = 843
+myId: 10, id: 7 x = 324, y = 724
+myId: 16, id: 17 x = 998, y = 526
+myId: 16, id: 18 x = 307, y = 933
+myId: 16, id: 19 x = 458, y = 550
+myId: 10, id: 8 x = 349, y = 66
+myId: 10, id: 9 x = 377, y = 453
+myId: 8, id: 11 x = 176, y = 33
+myId: 8, id: 12 x = 510, y = 843
+myId: 8, id: 13 x = 761, y = 922
+myId: 8, id: 14 x = 114, y = 345
+myId: 8, id: 15 x = 403, y = 990
+myId: 2, id: 10 x = 697, y = 458
+myId: 2, id: 11 x = 176, y = 33
+myId: 15, id: 13 x = 761, y = 922
+myId: 15, id: 14 x = 114, y = 345
+myId: 15, id: 16 x = 595, y = 891
+myId: 15, id: 17 x = 998, y = 526
+myId: 15, id: 18 x = 307, y = 933
+myId: 8, id: 16 x = 595, y = 891
+myId: 8, id: 17 x = 998, y = 526
+myId: 8, id: 18 x = 307, y = 933
+myId: 15, id: 19 x = 458, y = 550
+myId: 10, id: 11 x = 176, y = 33
+myId: 10, id: 12 x = 510, y = 843
+myId: 10, id: 13 x = 761, y = 922
+myId: 10, id: 14 x = 114, y = 345
+myId: 2, id: 12 x = 510, y = 843
+myId: 8, id: 19 x = 458, y = 550
+myId: 10, id: 15 x = 403, y = 990
+myId: 10, id: 16 x = 595, y = 891
+myId: 2, id: 13 x = 761, y = 922
+myId: 2, id: 14 x = 114, y = 345
+myId: 2, id: 15 x = 403, y = 990
+myId: 2, id: 16 x = 595, y = 891
+myId: 10, id: 17 x = 998, y = 526
+myId: 10, id: 18 x = 307, y = 933
+myId: 10, id: 19 x = 458, y = 550
+myId: 2, id: 17 x = 998, y = 526
+myId: 2, id: 18 x = 307, y = 933
+myId: 2, id: 19 x = 458, y = 550
+totalPacketsReceived 11, totalHops 11
+
+
+*****************************************************************************
+
+
+
+
+10. Test for 9 timesteps with around 20 nodes and 8 destination 
+	node. 100 transmission range, 14 packets buffer space and 60% space to be 
+	left for self generated packets.
+
+
+Result:
+	For this only 19 total packet transmissions happened in the system, and
+	4 of them reached the destination node and every node got the location
+	of other nodes correctly.
+
+Output:
+*****************************************************************************
+
+
+uwo916@s360-peon7:~/cmpt434/a3/cmpt434-group10/asn3> ./DTN-sim 20 9 8 100 14 60
+id: 0 startLocation x, y: 68, 996
+id: 1 startLocation x, y: 595, 891
+id: 14 startLocation x, y: 26, 390
+id: 19 startLocation x, y: 761, 922
+id: 17 startLocation x, y: 460, 538
+id: 6 startLocation x, y: 33, 349
+id: 13 startLocation x, y: 122, 458
+id: 2 startLocation x, y: 510, 965
+id: 18 startLocation x, y: 307, 514
+id: 5 startLocation x, y: 145, 968
+id: 11 startLocation x, y: 114, 458
+id: 4 startLocation x, y: 403, 509
+id: 9 startLocation x, y: 933, 453
+id: 12 startLocation x, y: 550, 345
+id: 16 startLocation x, y: 176, 324
+id: 10 startLocation x, y: 727, 377
+id: 15 startLocation x, y: 724, 66
+id: 8 startLocation x, y: 223, 697
+id: 7 startLocation x, y: 998, 526
+id: 3 startLocation x, y: 990, 843
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+All are waiting properly
+1 incremented the loopCounter to 4
+All are waiting properly
+1 incremented the loopCounter to 5
+All are waiting properly
+1 incremented the loopCounter to 6
+All are waiting properly
+1 incremented the loopCounter to 7
+All are waiting properly
+1 incremented the loopCounter to 8
+All are waiting properly
+1 incremented the loopCounter to 9
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 595, y = 891
+myId: 2, id: 3 x = 990, y = 843
+myId: 2, id: 4 x = 403, y = 509
+myId: 2, id: 5 x = 145, y = 968
+myId: 2, id: 6 x = 33, y = 349
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 595, y = 891
+myId: 8, id: 0 x = 68, y = 996
+myId: 9, id: 0 x = 68, y = 996
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 510, y = 965
+myId: 1, id: 3 x = 990, y = 843
+myId: 1, id: 4 x = 403, y = 509
+myId: 1, id: 5 x = 145, y = 968
+myId: 1, id: 6 x = 33, y = 349
+myId: 1, id: 7 x = 998, y = 526
+myId: 1, id: 8 x = 223, y = 697
+myId: 1, id: 9 x = 933, y = 453
+myId: 1, id: 10 x = 727, y = 377
+myId: 1, id: 11 x = 114, y = 458
+myId: 1, id: 12 x = 550, y = 345
+myId: 1, id: 13 x = 122, y = 458
+myId: 1, id: 14 x = 26, y = 390
+myId: 1, id: 15 x = 724, y = 66
+myId: 1, id: 16 x = 176, y = 324
+myId: 1, id: 17 x = 460, y = 538
+myId: 1, id: 18 x = 307, y = 514
+myId: 1, id: 19 x = 761, y = 922
+myId: 16, id: 0 x = 68, y = 996
+myId: 16, id: 1 x = 595, y = 891
+myId: 16, id: 2 x = 510, y = 965
+myId: 16, id: 3 x = 990, y = 843
+myId: 16, id: 4 x = 403, y = 509
+myId: 16, id: 5 x = 145, y = 968
+myId: 16, id: 6 x = 33, y = 349
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 595, y = 891
+myId: 4, id: 2 x = 510, y = 965
+myId: 4, id: 3 x = 990, y = 843
+myId: 4, id: 5 x = 145, y = 968
+myId: 4, id: 6 x = 33, y = 349
+myId: 4, id: 7 x = 998, y = 526
+myId: 4, id: 8 x = 223, y = 697
+myId: 4, id: 9 x = 933, y = 453
+myId: 4, id: 10 x = 727, y = 377
+myId: 4, id: 11 x = 114, y = 458
+myId: 4, id: 12 x = 550, y = 345
+myId: 4, id: 13 x = 122, y = 458
+myId: 4, id: 14 x = 26, y = 390
+myId: 4, id: 15 x = 724, y = 66
+myId: 4, id: 16 x = 176, y = 324
+myId: 4, id: 17 x = 460, y = 538
+myId: 4, id: 18 x = 307, y = 514
+myId: 4, id: 19 x = 761, y = 922
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 595, y = 891
+myId: 5, id: 2 x = 510, y = 965
+myId: 5, id: 3 x = 990, y = 843
+myId: 5, id: 4 x = 403, y = 509
+myId: 5, id: 6 x = 33, y = 349
+myId: 5, id: 7 x = 998, y = 526
+myId: 5, id: 8 x = 223, y = 697
+myId: 0, id: 1 x = 595, y = 891
+myId: 0, id: 2 x = 510, y = 965
+myId: 0, id: 3 x = 990, y = 843
+myId: 0, id: 4 x = 403, y = 509
+myId: 0, id: 5 x = 145, y = 968
+myId: 0, id: 6 x = 33, y = 349
+myId: 0, id: 7 x = 998, y = 526
+myId: 0, id: 8 x = 223, y = 697
+myId: 0, id: 9 x = 933, y = 453
+myId: 0, id: 10 x = 727, y = 377
+myId: 0, id: 11 x = 114, y = 458
+myId: 0, id: 12 x = 550, y = 345
+myId: 0, id: 13 x = 122, y = 458
+myId: 0, id: 14 x = 26, y = 390
+myId: 0, id: 15 x = 724, y = 66
+myId: 0, id: 16 x = 176, y = 324
+myId: 0, id: 17 x = 460, y = 538
+myId: 0, id: 18 x = 307, y = 514
+myId: 0, id: 19 x = 761, y = 922
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 595, y = 891
+myId: 10, id: 2 x = 510, y = 965
+myId: 10, id: 3 x = 990, y = 843
+myId: 10, id: 4 x = 403, y = 509
+myId: 10, id: 5 x = 145, y = 968
+myId: 10, id: 6 x = 33, y = 349
+myId: 10, id: 7 x = 998, y = 526
+myId: 10, id: 8 x = 223, y = 697
+myId: 10, id: 9 x = 933, y = 453
+myId: 10, id: 11 x = 114, y = 458
+myId: 10, id: 12 x = 550, y = 345
+myId: 10, id: 13 x = 122, y = 458
+myId: 10, id: 14 x = 26, y = 390
+myId: 10, id: 15 x = 724, y = 66
+myId: 10, id: 16 x = 176, y = 324
+myId: 10, id: 17 x = 460, y = 538
+myId: 10, id: 18 x = 307, y = 514
+myId: 10, id: 19 x = 761, y = 922
+myId: 8, id: 1 x = 595, y = 891
+myId: 8, id: 2 x = 510, y = 965
+myId: 8, id: 3 x = 990, y = 843
+myId: 8, id: 4 x = 403, y = 509
+myId: 8, id: 5 x = 145, y = 968
+myId: 8, id: 6 x = 33, y = 349
+myId: 8, id: 7 x = 998, y = 526
+myId: 8, id: 9 x = 933, y = 453
+myId: 8, id: 10 x = 727, y = 377
+myId: 8, id: 11 x = 114, y = 458
+myId: 8, id: 12 x = 550, y = 345
+myId: 8, id: 13 x = 122, y = 458
+myId: 8, id: 14 x = 26, y = 390
+myId: 8, id: 15 x = 724, y = 66
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 595, y = 891
+myId: 7, id: 2 x = 510, y = 965
+myId: 7, id: 3 x = 990, y = 843
+myId: 7, id: 4 x = 403, y = 509
+myId: 7, id: 5 x = 145, y = 968
+myId: 7, id: 6 x = 33, y = 349
+myId: 7, id: 8 x = 223, y = 697
+myId: 7, id: 9 x = 933, y = 453
+myId: 7, id: 10 x = 727, y = 377
+myId: 7, id: 11 x = 114, y = 458
+myId: 7, id: 12 x = 550, y = 345
+myId: 7, id: 13 x = 122, y = 458
+myId: 7, id: 14 x = 26, y = 390
+myId: 19, id: 0 x = 68, y = 996
+myId: 19, id: 1 x = 595, y = 891
+myId: 19, id: 2 x = 510, y = 965
+myId: 19, id: 3 x = 990, y = 843
+myId: 19, id: 4 x = 403, y = 509
+myId: 19, id: 5 x = 145, y = 968
+myId: 19, id: 6 x = 33, y = 349
+myId: 19, id: 7 x = 998, y = 526
+myId: 19, id: 8 x = 223, y = 697
+myId: 2, id: 7 x = 998, y = 526
+myId: 2, id: 8 x = 223, y = 697
+myId: 2, id: 9 x = 933, y = 453
+myId: 2, id: 10 x = 727, y = 377
+myId: 2, id: 11 x = 114, y = 458
+myId: 2, id: 12 x = 550, y = 345
+myId: 2, id: 13 x = 122, y = 458
+myId: 2, id: 14 x = 26, y = 390
+myId: 2, id: 15 x = 724, y = 66
+myId: 2, id: 16 x = 176, y = 324
+myId: 2, id: 17 x = 460, y = 538
+myId: 2, id: 18 x = 307, y = 514
+myId: 2, id: 19 x = 761, y = 922
+myId: 6, id: 0 x = 68, y = 996
+myId: 6, id: 1 x = 595, y = 891
+myId: 6, id: 2 x = 510, y = 965
+myId: 6, id: 3 x = 990, y = 843
+myId: 6, id: 4 x = 403, y = 509
+myId: 5, id: 9 x = 933, y = 453
+myId: 5, id: 10 x = 727, y = 377
+myId: 5, id: 11 x = 114, y = 458
+myId: 5, id: 12 x = 550, y = 345
+myId: 5, id: 13 x = 122, y = 458
+myId: 5, id: 14 x = 26, y = 390
+myId: 5, id: 15 x = 724, y = 66
+myId: 5, id: 16 x = 176, y = 324
+myId: 5, id: 17 x = 460, y = 538
+myId: 5, id: 18 x = 307, y = 514
+myId: 5, id: 19 x = 761, y = 922
+myId: 3, id: 2 x = 510, y = 965
+myId: 3, id: 4 x = 403, y = 509
+myId: 3, id: 5 x = 145, y = 968
+myId: 3, id: 6 x = 33, y = 349
+myId: 3, id: 7 x = 998, y = 526
+myId: 3, id: 8 x = 223, y = 697
+myId: 3, id: 9 x = 933, y = 453
+myId: 3, id: 10 x = 727, y = 377
+myId: 3, id: 11 x = 114, y = 458
+myId: 3, id: 12 x = 550, y = 345
+myId: 3, id: 13 x = 122, y = 458
+myId: 3, id: 14 x = 26, y = 390
+myId: 3, id: 15 x = 724, y = 66
+myId: 3, id: 16 x = 176, y = 324
+myId: 3, id: 17 x = 460, y = 538
+myId: 3, id: 18 x = 307, y = 514
+myId: 3, id: 19 x = 761, y = 922
+myId: 12, id: 0 x = 68, y = 996
+myId: 12, id: 1 x = 595, y = 891
+myId: 12, id: 2 x = 510, y = 965
+myId: 12, id: 3 x = 990, y = 843
+myId: 12, id: 4 x = 403, y = 509
+myId: 8, id: 16 x = 176, y = 324
+myId: 8, id: 17 x = 460, y = 538
+myId: 8, id: 18 x = 307, y = 514
+myId: 8, id: 19 x = 761, y = 922
+myId: 11, id: 0 x = 68, y = 996
+myId: 11, id: 1 x = 595, y = 891
+myId: 11, id: 2 x = 510, y = 965
+myId: 11, id: 3 x = 990, y = 843
+myId: 11, id: 4 x = 403, y = 509
+myId: 11, id: 5 x = 145, y = 968
+myId: 11, id: 6 x = 33, y = 349
+myId: 11, id: 7 x = 998, y = 526
+myId: 11, id: 8 x = 223, y = 697
+myId: 11, id: 9 x = 933, y = 453
+myId: 11, id: 10 x = 727, y = 377
+myId: 19, id: 9 x = 933, y = 453
+myId: 19, id: 10 x = 727, y = 377
+myId: 19, id: 11 x = 114, y = 458
+myId: 19, id: 12 x = 550, y = 345
+myId: 19, id: 13 x = 122, y = 458
+myId: 16, id: 7 x = 998, y = 526
+myId: 16, id: 8 x = 223, y = 697
+myId: 16, id: 9 x = 933, y = 453
+myId: 16, id: 10 x = 727, y = 377
+myId: 16, id: 11 x = 114, y = 458
+myId: 16, id: 12 x = 550, y = 345
+myId: 16, id: 13 x = 122, y = 458
+myId: 16, id: 14 x = 26, y = 390
+myId: 16, id: 15 x = 724, y = 66
+myId: 16, id: 17 x = 460, y = 538
+myId: 16, id: 18 x = 307, y = 514
+myId: 16, id: 19 x = 761, y = 922
+myId: 6, id: 5 x = 145, y = 968
+myId: 6, id: 7 x = 998, y = 526
+myId: 6, id: 8 x = 223, y = 697
+myId: 6, id: 9 x = 933, y = 453
+myId: 6, id: 10 x = 727, y = 377
+myId: 6, id: 11 x = 114, y = 458
+myId: 6, id: 12 x = 550, y = 345
+myId: 6, id: 13 x = 122, y = 458
+myId: 6, id: 14 x = 26, y = 390
+myId: 6, id: 15 x = 724, y = 66
+myId: 6, id: 16 x = 176, y = 324
+myId: 6, id: 17 x = 460, y = 538
+myId: 6, id: 18 x = 307, y = 514
+myId: 6, id: 19 x = 761, y = 922
+myId: 18, id: 0 x = 68, y = 996
+myId: 18, id: 1 x = 595, y = 891
+myId: 18, id: 2 x = 510, y = 965
+myId: 18, id: 3 x = 990, y = 843
+myId: 18, id: 4 x = 403, y = 509
+myId: 18, id: 5 x = 145, y = 968
+myId: 18, id: 6 x = 33, y = 349
+myId: 18, id: 7 x = 998, y = 526
+myId: 18, id: 8 x = 223, y = 697
+myId: 18, id: 9 x = 933, y = 453
+myId: 18, id: 10 x = 727, y = 377
+myId: 18, id: 11 x = 114, y = 458
+myId: 18, id: 12 x = 550, y = 345
+myId: 18, id: 13 x = 122, y = 458
+myId: 18, id: 14 x = 26, y = 390
+myId: 18, id: 15 x = 724, y = 66
+myId: 18, id: 16 x = 176, y = 324
+myId: 18, id: 17 x = 460, y = 538
+myId: 18, id: 19 x = 761, y = 922
+myId: 11, id: 12 x = 550, y = 345
+myId: 11, id: 13 x = 122, y = 458
+myId: 11, id: 14 x = 26, y = 390
+myId: 11, id: 15 x = 724, y = 66
+myId: 11, id: 16 x = 176, y = 324
+myId: 11, id: 17 x = 460, y = 538
+myId: 11, id: 18 x = 307, y = 514
+myId: 11, id: 19 x = 761, y = 922
+myId: 9, id: 1 x = 595, y = 891
+myId: 9, id: 2 x = 510, y = 965
+myId: 9, id: 3 x = 990, y = 843
+myId: 9, id: 4 x = 403, y = 509
+myId: 9, id: 5 x = 145, y = 968
+myId: 9, id: 6 x = 33, y = 349
+myId: 9, id: 7 x = 998, y = 526
+myId: 9, id: 8 x = 223, y = 697
+myId: 9, id: 10 x = 727, y = 377
+myId: 9, id: 11 x = 114, y = 458
+myId: 9, id: 12 x = 550, y = 345
+myId: 9, id: 13 x = 122, y = 458
+myId: 9, id: 14 x = 26, y = 390
+myId: 9, id: 15 x = 724, y = 66
+myId: 9, id: 16 x = 176, y = 324
+myId: 9, id: 17 x = 460, y = 538
+myId: 9, id: 18 x = 307, y = 514
+myId: 9, id: 19 x = 761, y = 922
+myId: 17, id: 0 x = 68, y = 996
+myId: 17, id: 1 x = 595, y = 891
+myId: 17, id: 2 x = 510, y = 965
+myId: 17, id: 3 x = 990, y = 843
+myId: 17, id: 4 x = 403, y = 509
+myId: 17, id: 5 x = 145, y = 968
+myId: 17, id: 6 x = 33, y = 349
+myId: 17, id: 7 x = 998, y = 526
+myId: 17, id: 8 x = 223, y = 697
+myId: 17, id: 9 x = 933, y = 453
+myId: 17, id: 10 x = 727, y = 377
+myId: 17, id: 11 x = 114, y = 458
+myId: 17, id: 12 x = 550, y = 345
+myId: 17, id: 13 x = 122, y = 458
+myId: 14, id: 0 x = 68, y = 996
+myId: 14, id: 1 x = 595, y = 891
+myId: 14, id: 2 x = 510, y = 965
+myId: 14, id: 3 x = 990, y = 843
+myId: 14, id: 4 x = 403, y = 509
+myId: 14, id: 5 x = 145, y = 968
+myId: 14, id: 6 x = 33, y = 349
+myId: 14, id: 7 x = 998, y = 526
+myId: 14, id: 8 x = 223, y = 697
+myId: 14, id: 9 x = 933, y = 453
+myId: 14, id: 10 x = 727, y = 377
+myId: 14, id: 11 x = 114, y = 458
+myId: 14, id: 12 x = 550, y = 345
+myId: 14, id: 13 x = 122, y = 458
+myId: 14, id: 15 x = 724, y = 66
+myId: 14, id: 16 x = 176, y = 324
+myId: 14, id: 17 x = 460, y = 538
+myId: 14, id: 18 x = 307, y = 514
+myId: 14, id: 19 x = 761, y = 922
+myId: 12, id: 5 x = 145, y = 968
+myId: 12, id: 6 x = 33, y = 349
+myId: 12, id: 7 x = 998, y = 526
+myId: 12, id: 8 x = 223, y = 697
+myId: 12, id: 9 x = 933, y = 453
+myId: 12, id: 10 x = 727, y = 377
+myId: 12, id: 11 x = 114, y = 458
+myId: 12, id: 13 x = 122, y = 458
+myId: 12, id: 14 x = 26, y = 390
+myId: 12, id: 15 x = 724, y = 66
+myId: 12, id: 16 x = 176, y = 324
+myId: 12, id: 17 x = 460, y = 538
+myId: 12, id: 18 x = 307, y = 514
+myId: 12, id: 19 x = 761, y = 922
+myId: 17, id: 14 x = 26, y = 390
+myId: 17, id: 15 x = 724, y = 66
+myId: 17, id: 16 x = 176, y = 324
+myId: 17, id: 18 x = 307, y = 514
+myId: 17, id: 19 x = 761, y = 922
+myId: 15, id: 0 x = 68, y = 996
+myId: 15, id: 1 x = 595, y = 891
+myId: 15, id: 2 x = 510, y = 965
+myId: 15, id: 3 x = 990, y = 843
+myId: 15, id: 4 x = 403, y = 509
+myId: 15, id: 5 x = 145, y = 968
+myId: 15, id: 6 x = 33, y = 349
+myId: 15, id: 7 x = 998, y = 526
+myId: 15, id: 8 x = 223, y = 697
+myId: 15, id: 9 x = 933, y = 453
+myId: 15, id: 10 x = 727, y = 377
+myId: 15, id: 11 x = 114, y = 458
+myId: 15, id: 12 x = 550, y = 345
+myId: 15, id: 13 x = 122, y = 458
+myId: 15, id: 14 x = 26, y = 390
+myId: 15, id: 16 x = 176, y = 324
+myId: 19, id: 14 x = 26, y = 390
+myId: 13, id: 0 x = 68, y = 996
+myId: 13, id: 1 x = 595, y = 891
+myId: 15, id: 17 x = 460, y = 538
+myId: 19, id: 15 x = 724, y = 66
+myId: 7, id: 15 x = 724, y = 66
+myId: 7, id: 16 x = 176, y = 324
+myId: 7, id: 17 x = 460, y = 538
+myId: 7, id: 18 x = 307, y = 514
+myId: 7, id: 19 x = 761, y = 922
+myId: 19, id: 16 x = 176, y = 324
+myId: 19, id: 17 x = 460, y = 538
+myId: 19, id: 18 x = 307, y = 514
+myId: 13, id: 2 x = 510, y = 965
+myId: 13, id: 3 x = 990, y = 843
+myId: 13, id: 4 x = 403, y = 509
+myId: 13, id: 5 x = 145, y = 968
+myId: 13, id: 6 x = 33, y = 349
+myId: 13, id: 7 x = 998, y = 526
+myId: 13, id: 8 x = 223, y = 697
+myId: 13, id: 9 x = 933, y = 453
+myId: 13, id: 10 x = 727, y = 377
+myId: 13, id: 11 x = 114, y = 458
+myId: 13, id: 12 x = 550, y = 345
+myId: 15, id: 18 x = 307, y = 514
+myId: 15, id: 19 x = 761, y = 922
+myId: 13, id: 14 x = 26, y = 390
+myId: 13, id: 15 x = 724, y = 66
+myId: 13, id: 16 x = 176, y = 324
+myId: 13, id: 17 x = 460, y = 538
+myId: 13, id: 18 x = 307, y = 514
+myId: 13, id: 19 x = 761, y = 922
+totalPacketsReceived 4, totalHops 19
+
+
+*****************************************************************************
+
+
+
+
+11. Test for 9 timesteps with around 20 nodes and 10 destination 
+	node. 100 transmission range, 4 packets buffer space and 60% space to be 
+	left for self generated packets.
+
+
+Result:
+	For this only 6 total packet transmissions happened in the system, and
+	3 of them reached the destination node and every node got the location
+	of other nodes correctly. 50% reached. 5 packets dropped due to
+	que becoming full.
+
+Output:
+*****************************************************************************
+
+uwo916@s360-peon7:~/cmpt434/a3/cmpt434-group10/asn3> ./DTN-sim 20 9 10 100 4 60
+id: 0 startLocation x, y: 68, 996
+id: 2 startLocation x, y: 595, 891
+id: 9 startLocation x, y: 761, 922
+id: 18 startLocation x, y: 460, 538
+id: 4 startLocation x, y: 990, 145
+id: 7 startLocation x, y: 223, 727
+id: 11 startLocation x, y: 377, 453
+id: 1 startLocation x, y: 509, 965
+id: 3 startLocation x, y: 26, 390
+id: 5 startLocation x, y: 933, 176
+id: 15 startLocation x, y: 458, 33
+id: 6 startLocation x, y: 550, 122
+id: 14 startLocation x, y: 514, 349
+id: 13 startLocation x, y: 403, 510
+id: 16 startLocation x, y: 114, 324
+id: 10 startLocation x, y: 697, 724
+id: 17 startLocation x, y: 968, 458
+id: 8 startLocation x, y: 998, 526
+id: 12 startLocation x, y: 843, 307
+id: 19 startLocation x, y: 345, 66
+1 incremented the loopCounter to 1
+All are waiting properly
+1 incremented the loopCounter to 2
+All are waiting properly
+1 incremented the loopCounter to 3
+All are waiting properly
+1 incremented the loopCounter to 4
+All are waiting properly
+10 discarded packet because queue full
+1 incremented the loopCounter to 5
+All are waiting properly
+10 discarded packet because queue full
+1 incremented the loopCounter to 6
+All are waiting properly
+10 discarded packet because queue full
+1 incremented the loopCounter to 7
+All are waiting properly
+10 discarded packet because queue full
+1 incremented the loopCounter to 8
+All are waiting properly
+10 discarded packet because queue full
+1 incremented the loopCounter to 9
+myId: 3, id: 0 x = 68, y = 996
+myId: 3, id: 1 x = 509, y = 965
+myId: 3, id: 2 x = 595, y = 891
+myId: 3, id: 4 x = 990, y = 145
+myId: 3, id: 5 x = 933, y = 176
+myId: 3, id: 6 x = 550, y = 122
+myId: 0, id: 1 x = 509, y = 965
+myId: 10, id: 0 x = 68, y = 996
+myId: 10, id: 1 x = 509, y = 965
+myId: 6, id: 0 x = 68, y = 996
+myId: 11, id: 0 x = 68, y = 996
+myId: 11, id: 1 x = 509, y = 965
+myId: 11, id: 2 x = 595, y = 891
+myId: 11, id: 3 x = 26, y = 390
+myId: 11, id: 4 x = 990, y = 145
+myId: 11, id: 5 x = 933, y = 176
+myId: 11, id: 6 x = 550, y = 122
+myId: 11, id: 7 x = 223, y = 727
+myId: 11, id: 8 x = 998, y = 526
+myId: 11, id: 9 x = 761, y = 922
+myId: 11, id: 10 x = 697, y = 724
+myId: 11, id: 12 x = 843, y = 307
+myId: 11, id: 13 x = 403, y = 510
+myId: 11, id: 14 x = 514, y = 349
+myId: 11, id: 15 x = 458, y = 33
+myId: 11, id: 16 x = 114, y = 324
+myId: 11, id: 17 x = 968, y = 458
+myId: 11, id: 18 x = 460, y = 538
+myId: 11, id: 19 x = 345, y = 66
+myId: 1, id: 0 x = 68, y = 996
+myId: 1, id: 2 x = 595, y = 891
+myId: 1, id: 3 x = 26, y = 390
+myId: 1, id: 4 x = 990, y = 145
+myId: 1, id: 5 x = 933, y = 176
+myId: 7, id: 0 x = 68, y = 996
+myId: 7, id: 1 x = 509, y = 965
+myId: 7, id: 2 x = 595, y = 891
+myId: 7, id: 3 x = 26, y = 390
+myId: 7, id: 4 x = 990, y = 145
+myId: 7, id: 5 x = 933, y = 176
+myId: 7, id: 6 x = 550, y = 122
+myId: 7, id: 8 x = 998, y = 526
+myId: 7, id: 9 x = 761, y = 922
+myId: 7, id: 10 x = 697, y = 724
+myId: 7, id: 11 x = 377, y = 453
+myId: 7, id: 12 x = 843, y = 307
+myId: 7, id: 13 x = 403, y = 510
+myId: 7, id: 14 x = 514, y = 349
+myId: 7, id: 15 x = 458, y = 33
+myId: 7, id: 16 x = 114, y = 324
+myId: 7, id: 17 x = 968, y = 458
+myId: 7, id: 18 x = 460, y = 538
+myId: 4, id: 0 x = 68, y = 996
+myId: 4, id: 1 x = 509, y = 965
+myId: 4, id: 2 x = 595, y = 891
+myId: 4, id: 3 x = 26, y = 390
+myId: 4, id: 5 x = 933, y = 176
+myId: 4, id: 6 x = 550, y = 122
+myId: 4, id: 7 x = 223, y = 727
+myId: 4, id: 8 x = 998, y = 526
+myId: 4, id: 9 x = 761, y = 922
+myId: 4, id: 10 x = 697, y = 724
+myId: 4, id: 11 x = 377, y = 453
+myId: 4, id: 12 x = 843, y = 307
+myId: 15, id: 0 x = 68, y = 996
+myId: 15, id: 1 x = 509, y = 965
+myId: 15, id: 2 x = 595, y = 891
+myId: 15, id: 3 x = 26, y = 390
+myId: 15, id: 4 x = 990, y = 145
+myId: 15, id: 5 x = 933, y = 176
+myId: 15, id: 6 x = 550, y = 122
+myId: 15, id: 7 x = 223, y = 727
+myId: 15, id: 8 x = 998, y = 526
+myId: 15, id: 9 x = 761, y = 922
+myId: 15, id: 10 x = 697, y = 724
+myId: 15, id: 11 x = 377, y = 453
+myId: 15, id: 12 x = 843, y = 307
+myId: 15, id: 13 x = 403, y = 510
+myId: 15, id: 14 x = 514, y = 349
+myId: 15, id: 16 x = 114, y = 324
+myId: 15, id: 17 x = 968, y = 458
+myId: 15, id: 18 x = 460, y = 538
+myId: 15, id: 19 x = 345, y = 66
+myId: 19, id: 0 x = 68, y = 996
+myId: 10, id: 2 x = 595, y = 891
+myId: 10, id: 3 x = 26, y = 390
+myId: 10, id: 4 x = 990, y = 145
+myId: 10, id: 5 x = 933, y = 176
+myId: 10, id: 6 x = 550, y = 122
+myId: 10, id: 7 x = 223, y = 727
+myId: 10, id: 8 x = 998, y = 526
+myId: 10, id: 9 x = 761, y = 922
+myId: 10, id: 11 x = 377, y = 453
+myId: 10, id: 12 x = 843, y = 307
+myId: 10, id: 13 x = 403, y = 510
+myId: 10, id: 14 x = 514, y = 349
+myId: 10, id: 15 x = 458, y = 33
+myId: 10, id: 16 x = 114, y = 324
+myId: 10, id: 17 x = 968, y = 458
+myId: 10, id: 18 x = 460, y = 538
+myId: 10, id: 19 x = 345, y = 66
+myId: 14, id: 0 x = 68, y = 996
+myId: 14, id: 1 x = 509, y = 965
+myId: 14, id: 2 x = 595, y = 891
+myId: 14, id: 3 x = 26, y = 390
+myId: 14, id: 4 x = 990, y = 145
+myId: 14, id: 5 x = 933, y = 176
+myId: 14, id: 6 x = 550, y = 122
+myId: 14, id: 7 x = 223, y = 727
+myId: 14, id: 8 x = 998, y = 526
+myId: 14, id: 9 x = 761, y = 922
+myId: 3, id: 7 x = 223, y = 727
+myId: 3, id: 8 x = 998, y = 526
+myId: 3, id: 9 x = 761, y = 922
+myId: 3, id: 10 x = 697, y = 724
+myId: 3, id: 11 x = 377, y = 453
+myId: 3, id: 12 x = 843, y = 307
+myId: 7, id: 19 x = 345, y = 66
+myId: 4, id: 13 x = 403, y = 510
+myId: 4, id: 14 x = 514, y = 349
+myId: 4, id: 15 x = 458, y = 33
+myId: 4, id: 16 x = 114, y = 324
+myId: 4, id: 17 x = 968, y = 458
+myId: 4, id: 18 x = 460, y = 538
+myId: 4, id: 19 x = 345, y = 66
+myId: 5, id: 0 x = 68, y = 996
+myId: 5, id: 1 x = 509, y = 965
+myId: 5, id: 2 x = 595, y = 891
+myId: 5, id: 3 x = 26, y = 390
+myId: 5, id: 4 x = 990, y = 145
+myId: 5, id: 6 x = 550, y = 122
+myId: 5, id: 7 x = 223, y = 727
+myId: 5, id: 8 x = 998, y = 526
+myId: 5, id: 9 x = 761, y = 922
+myId: 5, id: 10 x = 697, y = 724
+myId: 18, id: 0 x = 68, y = 996
+myId: 18, id: 1 x = 509, y = 965
+myId: 18, id: 2 x = 595, y = 891
+myId: 18, id: 3 x = 26, y = 390
+myId: 18, id: 4 x = 990, y = 145
+myId: 18, id: 5 x = 933, y = 176
+myId: 18, id: 6 x = 550, y = 122
+myId: 18, id: 7 x = 223, y = 727
+myId: 18, id: 8 x = 998, y = 526
+myId: 18, id: 9 x = 761, y = 922
+myId: 18, id: 10 x = 697, y = 724
+myId: 9, id: 0 x = 68, y = 996
+myId: 9, id: 1 x = 509, y = 965
+myId: 9, id: 2 x = 595, y = 891
+myId: 9, id: 3 x = 26, y = 390
+myId: 9, id: 4 x = 990, y = 145
+myId: 9, id: 5 x = 933, y = 176
+myId: 9, id: 6 x = 550, y = 122
+myId: 9, id: 7 x = 223, y = 727
+myId: 9, id: 8 x = 998, y = 526
+myId: 9, id: 10 x = 697, y = 724
+myId: 9, id: 11 x = 377, y = 453
+myId: 9, id: 12 x = 843, y = 307
+myId: 9, id: 13 x = 403, y = 510
+myId: 9, id: 14 x = 514, y = 349
+myId: 9, id: 15 x = 458, y = 33
+myId: 9, id: 16 x = 114, y = 324
+myId: 9, id: 17 x = 968, y = 458
+myId: 9, id: 18 x = 460, y = 538
+myId: 9, id: 19 x = 345, y = 66
+myId: 14, id: 10 x = 697, y = 724
+myId: 14, id: 11 x = 377, y = 453
+myId: 14, id: 12 x = 843, y = 307
+myId: 14, id: 13 x = 403, y = 510
+myId: 14, id: 15 x = 458, y = 33
+myId: 14, id: 16 x = 114, y = 324
+myId: 14, id: 17 x = 968, y = 458
+myId: 14, id: 18 x = 460, y = 538
+myId: 14, id: 19 x = 345, y = 66
+myId: 6, id: 1 x = 509, y = 965
+myId: 6, id: 2 x = 595, y = 891
+myId: 6, id: 3 x = 26, y = 390
+myId: 6, id: 4 x = 990, y = 145
+myId: 6, id: 5 x = 933, y = 176
+myId: 1, id: 6 x = 550, y = 122
+myId: 1, id: 7 x = 223, y = 727
+myId: 1, id: 8 x = 998, y = 526
+myId: 1, id: 9 x = 761, y = 922
+myId: 1, id: 10 x = 697, y = 724
+myId: 1, id: 11 x = 377, y = 453
+myId: 1, id: 12 x = 843, y = 307
+myId: 1, id: 13 x = 403, y = 510
+myId: 1, id: 14 x = 514, y = 349
+myId: 1, id: 15 x = 458, y = 33
+myId: 1, id: 16 x = 114, y = 324
+myId: 1, id: 17 x = 968, y = 458
+myId: 1, id: 18 x = 460, y = 538
+myId: 1, id: 19 x = 345, y = 66
+myId: 19, id: 1 x = 509, y = 965
+myId: 19, id: 2 x = 595, y = 891
+myId: 19, id: 3 x = 26, y = 390
+myId: 19, id: 4 x = 990, y = 145
+myId: 19, id: 5 x = 933, y = 176
+myId: 19, id: 6 x = 550, y = 122
+myId: 19, id: 7 x = 223, y = 727
+myId: 19, id: 8 x = 998, y = 526
+myId: 19, id: 9 x = 761, y = 922
+myId: 19, id: 10 x = 697, y = 724
+myId: 17, id: 0 x = 68, y = 996
+myId: 17, id: 1 x = 509, y = 965
+myId: 17, id: 2 x = 595, y = 891
+myId: 17, id: 3 x = 26, y = 390
+myId: 17, id: 4 x = 990, y = 145
+myId: 17, id: 5 x = 933, y = 176
+myId: 17, id: 6 x = 550, y = 122
+myId: 17, id: 7 x = 223, y = 727
+myId: 8, id: 0 x = 68, y = 996
+myId: 13, id: 0 x = 68, y = 996
+myId: 13, id: 1 x = 509, y = 965
+myId: 13, id: 2 x = 595, y = 891
+myId: 13, id: 3 x = 26, y = 390
+myId: 13, id: 4 x = 990, y = 145
+myId: 13, id: 5 x = 933, y = 176
+myId: 13, id: 6 x = 550, y = 122
+myId: 13, id: 7 x = 223, y = 727
+myId: 13, id: 8 x = 998, y = 526
+myId: 13, id: 9 x = 761, y = 922
+myId: 13, id: 10 x = 697, y = 724
+myId: 13, id: 11 x = 377, y = 453
+myId: 13, id: 12 x = 843, y = 307
+myId: 13, id: 14 x = 514, y = 349
+myId: 13, id: 15 x = 458, y = 33
+myId: 13, id: 16 x = 114, y = 324
+myId: 6, id: 7 x = 223, y = 727
+myId: 6, id: 8 x = 998, y = 526
+myId: 6, id: 9 x = 761, y = 922
+myId: 6, id: 10 x = 697, y = 724
+myId: 6, id: 11 x = 377, y = 453
+myId: 6, id: 12 x = 843, y = 307
+myId: 6, id: 13 x = 403, y = 510
+myId: 6, id: 14 x = 514, y = 349
+myId: 6, id: 15 x = 458, y = 33
+myId: 6, id: 16 x = 114, y = 324
+myId: 6, id: 17 x = 968, y = 458
+myId: 6, id: 18 x = 460, y = 538
+myId: 6, id: 19 x = 345, y = 66
+myId: 3, id: 13 x = 403, y = 510
+myId: 17, id: 8 x = 998, y = 526
+myId: 17, id: 9 x = 761, y = 922
+myId: 17, id: 10 x = 697, y = 724
+myId: 17, id: 11 x = 377, y = 453
+myId: 17, id: 12 x = 843, y = 307
+myId: 17, id: 13 x = 403, y = 510
+myId: 17, id: 14 x = 514, y = 349
+myId: 17, id: 15 x = 458, y = 33
+myId: 17, id: 16 x = 114, y = 324
+myId: 17, id: 18 x = 460, y = 538
+myId: 17, id: 19 x = 345, y = 66
+myId: 5, id: 11 x = 377, y = 453
+myId: 5, id: 12 x = 843, y = 307
+myId: 5, id: 13 x = 403, y = 510
+myId: 5, id: 14 x = 514, y = 349
+myId: 5, id: 15 x = 458, y = 33
+myId: 5, id: 16 x = 114, y = 324
+myId: 5, id: 17 x = 968, y = 458
+myId: 5, id: 18 x = 460, y = 538
+myId: 5, id: 19 x = 345, y = 66
+myId: 13, id: 17 x = 968, y = 458
+myId: 3, id: 14 x = 514, y = 349
+myId: 2, id: 0 x = 68, y = 996
+myId: 2, id: 1 x = 509, y = 965
+myId: 2, id: 3 x = 26, y = 390
+myId: 2, id: 4 x = 990, y = 145
+myId: 2, id: 5 x = 933, y = 176
+myId: 2, id: 6 x = 550, y = 122
+myId: 2, id: 7 x = 223, y = 727
+myId: 2, id: 8 x = 998, y = 526
+myId: 2, id: 9 x = 761, y = 922
+myId: 2, id: 10 x = 697, y = 724
+myId: 18, id: 11 x = 377, y = 453
+myId: 13, id: 18 x = 460, y = 538
+myId: 13, id: 19 x = 345, y = 66
+myId: 0, id: 2 x = 595, y = 891
+myId: 0, id: 3 x = 26, y = 390
+myId: 0, id: 4 x = 990, y = 145
+myId: 0, id: 5 x = 933, y = 176
+myId: 0, id: 6 x = 550, y = 122
+myId: 0, id: 7 x = 223, y = 727
+myId: 0, id: 8 x = 998, y = 526
+myId: 0, id: 9 x = 761, y = 922
+myId: 0, id: 10 x = 697, y = 724
+myId: 0, id: 11 x = 377, y = 453
+myId: 0, id: 12 x = 843, y = 307
+myId: 0, id: 13 x = 403, y = 510
+myId: 0, id: 14 x = 514, y = 349
+myId: 0, id: 15 x = 458, y = 33
+myId: 0, id: 16 x = 114, y = 324
+myId: 0, id: 17 x = 968, y = 458
+myId: 3, id: 15 x = 458, y = 33
+myId: 19, id: 11 x = 377, y = 453
+myId: 19, id: 12 x = 843, y = 307
+myId: 19, id: 13 x = 403, y = 510
+myId: 12, id: 0 x = 68, y = 996
+myId: 12, id: 1 x = 509, y = 965
+myId: 12, id: 2 x = 595, y = 891
+myId: 12, id: 3 x = 26, y = 390
+myId: 12, id: 4 x = 990, y = 145
+myId: 12, id: 5 x = 933, y = 176
+myId: 12, id: 6 x = 550, y = 122
+myId: 12, id: 7 x = 223, y = 727
+myId: 12, id: 8 x = 998, y = 526
+myId: 12, id: 9 x = 761, y = 922
+myId: 12, id: 10 x = 697, y = 724
+myId: 12, id: 11 x = 377, y = 453
+myId: 12, id: 13 x = 403, y = 510
+myId: 12, id: 14 x = 514, y = 349
+myId: 12, id: 15 x = 458, y = 33
+myId: 12, id: 16 x = 114, y = 324
+myId: 12, id: 17 x = 968, y = 458
+myId: 12, id: 18 x = 460, y = 538
+myId: 12, id: 19 x = 345, y = 66
+myId: 2, id: 11 x = 377, y = 453
+myId: 2, id: 12 x = 843, y = 307
+myId: 2, id: 13 x = 403, y = 510
+myId: 2, id: 14 x = 514, y = 349
+myId: 2, id: 15 x = 458, y = 33
+myId: 2, id: 16 x = 114, y = 324
+myId: 2, id: 17 x = 968, y = 458
+myId: 2, id: 18 x = 460, y = 538
+myId: 3, id: 16 x = 114, y = 324
+myId: 3, id: 17 x = 968, y = 458
+myId: 3, id: 18 x = 460, y = 538
+myId: 3, id: 19 x = 345, y = 66
+myId: 19, id: 14 x = 514, y = 349
+myId: 19, id: 15 x = 458, y = 33
+myId: 19, id: 16 x = 114, y = 324
+myId: 19, id: 17 x = 968, y = 458
+myId: 19, id: 18 x = 460, y = 538
+myId: 18, id: 12 x = 843, y = 307
+myId: 18, id: 13 x = 403, y = 510
+myId: 18, id: 14 x = 514, y = 349
+myId: 18, id: 15 x = 458, y = 33
+myId: 18, id: 16 x = 114, y = 324
+myId: 2, id: 19 x = 345, y = 66
+myId: 16, id: 0 x = 68, y = 996
+myId: 16, id: 1 x = 509, y = 965
+myId: 16, id: 2 x = 595, y = 891
+myId: 16, id: 3 x = 26, y = 390
+myId: 16, id: 4 x = 990, y = 145
+myId: 16, id: 5 x = 933, y = 176
+myId: 16, id: 6 x = 550, y = 122
+myId: 16, id: 7 x = 223, y = 727
+myId: 16, id: 8 x = 998, y = 526
+myId: 16, id: 9 x = 761, y = 922
+myId: 16, id: 10 x = 697, y = 724
+myId: 16, id: 11 x = 377, y = 453
+myId: 16, id: 12 x = 843, y = 307
+myId: 16, id: 13 x = 403, y = 510
+myId: 16, id: 14 x = 514, y = 349
+myId: 16, id: 15 x = 458, y = 33
+myId: 16, id: 17 x = 968, y = 458
+myId: 16, id: 18 x = 460, y = 538
+myId: 16, id: 19 x = 345, y = 66
+myId: 18, id: 17 x = 968, y = 458
+myId: 18, id: 19 x = 345, y = 66
+myId: 8, id: 1 x = 509, y = 965
+myId: 8, id: 2 x = 595, y = 891
+myId: 0, id: 18 x = 460, y = 538
+myId: 0, id: 19 x = 345, y = 66
+myId: 8, id: 3 x = 26, y = 390
+myId: 8, id: 4 x = 990, y = 145
+myId: 8, id: 5 x = 933, y = 176
+myId: 8, id: 6 x = 550, y = 122
+myId: 8, id: 7 x = 223, y = 727
+myId: 8, id: 9 x = 761, y = 922
+myId: 8, id: 10 x = 697, y = 724
+myId: 8, id: 11 x = 377, y = 453
+myId: 8, id: 12 x = 843, y = 307
+myId: 8, id: 13 x = 403, y = 510
+myId: 8, id: 14 x = 514, y = 349
+myId: 8, id: 15 x = 458, y = 33
+myId: 8, id: 16 x = 114, y = 324
+myId: 8, id: 17 x = 968, y = 458
+myId: 8, id: 18 x = 460, y = 538
+myId: 8, id: 19 x = 345, y = 66
+totalPacketsReceived 3, totalHops 6

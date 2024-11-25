@@ -1,0 +1,507 @@
+/*
+ * group-10 
+ * Narek Tamrazyan NSID: uwo916 Student Number: 11315451
+ * Devam Punitbhai Patel NSID: dns682 Student Number: 11316715
+ */
+
+First we connect all the nodes with all the other nodes in the system.
+So, there will be N * (N+1) connections in total if there are N nodes in the
+system and because each node will have 2 connections with each of the other
+nodes 1 to which it sends and 1 from which it receives.
+
+We have a global array of semaphores to synchronize the threads 
+and a global array of integers to check if the threads are waiting on them.
+
+And We have 3 pthread_mutex_t mutexs to provide mutual exclusion when changing
+global variables I could have used the semaphores but just for safety.
+
+And I have all the input parameters as global int.
+
+int whosTurn, whosSending, totalWaiting, whosTransmiting, totalHops,
+totalPacketsReceived, loopCounter/*for counting timesteps*/;
+
+struct coordinates
+{
+	int x;
+	int y;
+}
+
+struct dataPacket
+{
+	int id;
+	void *data;
+	int stepsAfterGeneration;	/*hops the packet took*/
+}
+threadFunction(void *id)
+{
+	while(1)
+	{
+		mark as waiting in mutexsCheck
+		sem_wait(&mutexs[id]);
+		mark as not waiting in mutexsCheck
+
+		if(whoTurn == *id)
+		{
+			it is my turn to accept connections, we accept connections from
+			(STARTING_PORT + whosTurn) /*or starting port + my id*/
+
+			port = string(STARTING_PORT + whosTurn);
+
+			getaddrinfo(NULL, port, /*and other required parameters*/)
+			
+			sockfd = socket();
+
+			bind(sockfd);
+
+			listen(sockfd);
+
+			for(i = 0; i < N; i++)
+			{
+				if(i == *id)
+				{
+					continue if i == myId
+				}
+				there is just an assertion here to check if thread is actually
+				waiting on the semaphore and prints error if it is not
+
+				sem_post(&mutexs[i]);
+
+				newfd = accept(sockfd);
+
+				sendingSockets[i] = newfd;
+			}
+
+			lock_mutex(whosTurn_mutex);
+			whosTurn++;
+			unlock_mutex(whosTurn_mutex);
+			if(whosTurn == N)
+			{
+				/*end the while loop if all of the nodes are connected*/
+				break;
+			}
+
+			sem_post(&mutexs[whosTurn]);
+		}
+		else
+		{
+			lock_mutex(whosTurn_mutex)
+
+			temp = whosTurn;
+
+			unlock_mutex(whosTurn_mutex)
+
+			port = string(STARTING_PORT + whosTurn);
+
+			getaddrinfo(port);
+
+			sockfd = socket();
+
+			connect(sockfd);
+
+			receivingSockets[temp] = sockfd;
+		}
+	}
+	if(id == N-1)
+	{
+		/*it just means that Im the first thread to come out of that infinite
+		while loop and that'll always be the case because that's how we have
+		designed it*/
+
+		whosSending = 0;
+
+		totalWaiting = 0;
+
+		for(i = 0; i < N-1; i++)
+		{
+			check if all are waiting correctly and print error if they are not
+		}
+
+		sem_post(&mutexs[0]);
+		sem_wait(&mutexs[id]);
+	}
+	/*get a random location for itself*/
+	myLocation.x = rand() % 1000;
+	myLocation. y = rand() % 1000;
+
+	print mylocation just for testing;
+
+	while(1)
+	{
+		mutex_lock(whosSending_mutex)
+
+		if(whosSending == *id)
+		{
+			/*if I am sending*/
+			mutex_unlock(whosSending);
+
+			for(i = 0; i < N; i++)
+			{
+				if(i == *id)
+				{
+					continue;
+				}
+				check if i is not waiting and print error
+
+				sem_post(&mutexs[i]);
+			}
+			while(totalWaiting != N-1)
+			{
+				/*wait for them to be blocked at recv*/
+				sleep(1);	/*sleep so that they can get processed rather than
+				polling on wait*/
+			}
+
+			mutex_lock(totalWaiting_mutex);
+
+			totalWaiting = 0;
+
+			mutex_unlock(totalWaiting_mutex);
+
+			for(i = 0; i < N; i++)
+			{
+				if(i == *id)
+				{
+					continue;
+				}
+				send(sendingSockets[i], myLocation);
+			}
+			while(totalWaiting != N-1)
+			{
+				/*let them get blocked on whosSending again*/
+				sleep(1);
+			}
+
+			mutex_lock(whosSending_mutex);
+
+			whosSending++;
+
+			if(whosSending == N)
+			{
+				mutex_unlock(whosSending_mutex);
+				break;
+			}
+			mutex_unlock(whosSending_mutex);
+			
+			/*release the next thread that is going to send*/
+			sem_post(&mutexs[whosSending);
+
+			/*go to wait*/
+			sem_wait(&mutexs[*id);
+		}
+		else
+		{
+			if(whosSending == N)
+			{
+				mutex_unlock(whosSending_mutex);
+				break;
+			}
+			
+			mutex_unlock(whosSending_mutex);
+
+			mutex_lock(totalWaiting_mutex);
+
+			totalWaiting++;
+			
+			mutex_unlock(totalWaiting_mutex);
+			
+			/*map will be an array of coordinates with location for all the
+			nodes in the system*/
+			recv(receivingSockets[whosSending], map[whosSending]);
+
+			mutex_lock(totalWaiting_mutex);
+
+			totalWaiting++;
+			
+			mutex_unlock(totalWaiting_mutex);
+
+			mark self as waiting
+			sem_wait(&mutexs[*id]);
+
+		}
+	}
+
+	if(*id == N - 1)
+	{
+		check if all are waiting properly and print if not
+	}
+	/*
+	set flag = 1;
+	loopCounter = 0;this 2 are for measuring timeSteps*/
+	
+	whosTransmitting = N -1 /*we start by the last node and it checks from the
+	first node if there are any in the transmission range because the first D
+	nodes are destination nodes it is best to send them if they are in range*/
+
+}
+
+while(flag)
+{
+	if(ListCount(myBuffer) < B)
+	{
+		/*if my buffer has space in it*/
+		generate a packet or print a message saying packet discarded because
+		out of space
+	}
+
+	while(whosTransmiting > D - 1)
+	{
+		/*because in our implementation the destination nodes have internet
+		connections so once a packet reaches one of them it can send the
+		packet to rest of the destinations so we olny check nodes other than
+		destination nodes*/
+
+		mutex_lock()
+
+		if(whosTransmiting == *id)
+		{
+			temp = ListCreate();
+
+			loop through the map and put indexes of all the nodes that are in
+			range for us.
+
+			for(i = 0; i < *id; i++)
+			{
+					if(map[i].x <= myLocation.x + R && map[i].x >= 
+					myLocation.x)
+					{
+						if(map[i].y <= myLocation.y + R && map[i].y >= 
+						myLocation.y)
+						{
+							ListAppend(temp, index);
+						}
+						else if(map[i].y >= myLocation.y - R && map[i].y <=
+						myLocation.y)
+						{
+							ListAppend(temp, index);	
+						}
+					}
+					else if(map[i].x >= myLocation.x - R && map[i].x <= 
+					myLocation.x)
+					{
+						if(map[i].y <= myLocation.y + R && map[i].y >= 
+						myLocation.y)
+						{
+							ListAppend(temp, index);	
+						}
+						else if(map[i].y >= myLocation.y - R && map[i].y <=
+						myLocation.y)
+						{
+							ListAppend(temp, index);
+						}
+					}
+
+			}
+
+			while(there are any nodes in the transmission rage)
+			{
+				sem_post(i)
+				follow the protocol here to send packet:
+					recv(ack that thenode is ready)
+
+					send(number of packets in our buffer that we want to send)
+
+					if(the other side is a destination)
+					{
+						send all our packets
+					}
+					else
+					{
+						recv(how many packets they can accept)
+
+						send(them as many packets as they can accept)
+					}		
+			}
+		}
+		else
+		{
+			if we are receiving then follow the protocol
+
+			send(ack that we are ready)
+
+			recv(number of packets they have to send)
+
+			see if we are a destination:
+				recv all the packets 
+				increment totalHops which are the total number of 
+				
+				totalHops += packet.steps it took after generation
+
+				transmissions that took place in the system
+				increment packet got to destination counter
+			else
+			{
+				calculate how many packets we can receive leaving room for
+				P% packets in our buffer
+
+				if number of packets they want to send < what we can receive
+					send them number of packets they want to receive to
+					indicate that we are receiving all the packets
+				else
+					send packets we can receive and receive them
+
+				increment totalhops in both cases
+
+				totalHops += packet.steps it took after generation
+
+			}
+		}
+	}
+
+	if(*id == D)
+	{
+		first node to come out of that infinite loop will be D-1
+		increment loopCounter as this is the end of a timestep
+		if loopCounter == timeSteps user wanted - 1:
+			flag = 0;
+			break;
+		else:
+			set whosTransmiting to N - 1
+
+	}
+
+}
+
+now if(*id == D)
+{
+	which will be the first node to come out of that infinite loop
+
+	signal all of the threads on their mutex so that they can exit
+}
+
+for( i = 0; i < N; i ++)
+{
+	print the map and close the sockets in receivingSockets and sendingSockets
+}
+
+return NULL
+
+int main()
+{
+	check if correct arguments are passed:
+
+	assign user given arguments to global variables
+	N, K, D, R, Q, P
+
+	initialize every semaphore to 0 in mutexs so that every thread waits
+	for(i = 0; i < N; i++)
+	{
+		pthread_create(threadFunction, i)
+	}
+
+	whosTurn = 0;
+	whosSending = 0;
+	totalHops = 0;
+	totalPacketsReceived = 0;
+
+	sem_post(mutexs[0])
+
+	pthread_join(the last thread);
+
+	/*wait for all the threads to exit*/
+	sleep(5);
+
+	print total packets that got to the destinations and total number of
+	transmissions that took place in the system
+
+	return 0;
+
+}
+
+
+
+
+/******************************/
+
+Protocol for packet transmission
+
+Once all of the nodes are connected to each other, for every timestamp, we
+start by sharing location with all the other nodes on the map, to do this we
+start from the first node it shares its location to all the other nodes on the
+map by signalling all of them and waiting until all of them are blocked on
+receive. Once all of them are receiving we send our coordinates to all of them
+one by one and upon receiving they go back to waiting on the semaphore.
+
+After sending to all we wait until all of the released nodes are back at
+waiting, once they are, we increment whosSending counter by one so that next
+node can send their coordinate to all the other on map after doing that we
+signal next and go back to waiting.
+
+
+Once the last node is done sending their coordinates, we start from the last
+node this time, it goes over the map starting from the first node because
+first D nodes in the map are destinations where we want to reach. So, we add
+index of nodes from the map that are within our transmission range to a
+temporary list.
+
+After looping through the entire map, we start from the first node in the list
+and wait on receive for them to send an ack that they are ready to receive.
+
+Once they are we send them the number of packets we have in our local buffer.
+
+After that, we see if the node is a destination,
+	if it is:
+		we start sending all our packets one by one and we remove them from
+		our local buffer
+
+		once done we wait to receive an ack from them indicating how many
+		packets they received, just to make sure every packet we transmitted
+		got there.
+	
+	else:
+		we wait to receive an ack from them indicating how many packets they
+		can take from us
+
+		after that we send them that many packets.
+
+	once transmission is done, we wait for them to go back to waiting on their
+	semaphore, once they are we decrease the counter of whosTransmitting,
+	signal them and go back to waiting.
+
+
+if we are on the receiving side
+	first we send an ack that we are ready to receive packets,
+
+	after that we wait to receive number of packets the other node wants to
+	transmit,
+
+	after that if we are a destination node:
+		we receive all the nodes the other node had
+		then, we send them number of nodes we received.
+		then we add the number of hops the packet had to take before
+		reaching us to total hops and increment total number of packets
+		received.
+
+	else:
+		we check how many nodes we can receive from them leaving 20% space
+		empty in our buffer, we send them the number that we can receive or 0
+		if we can't.
+
+		we receive the packets if we have space for it and add them to our
+		local buffer.
+
+		send them the number of packets we received.
+	go back to waiting.
+**************************************************************
+
+
+
+We have implemented the algorithm for not mobile nodes and we thought we will
+make them mobile once we are done testing for this so that we can have a
+report for non mobile and a report for mobile to make comparisions between
+those 2 as well other than normal parameters but now we don't have much time
+left so we are not changing it to be mobile because we won't have enough time
+to test it.
+
+But changing it to mobile is not hard we just need to include the location
+transmission in the while(flag) loop and with packet generation also generate
+random direction which will be an integer from 0 to 7 each for every direction
+E, W, N, S, NE, NW, SE, SW and change the location accordingly and transmit it
+accross the map.
+
+We also planned to change our protocol to take into account the number of hops
+a packet has already taken before sending it so we can avoid some extra hops
+but we won't have time to test that as well but for this also implementation
+is wasy to integrate with our implementation we just need to add an if
+condition.
+
+
