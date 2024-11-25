@@ -36,7 +36,24 @@ DTN-sim: DTN-sim.o
 DTN-sim.o: DTN-sim.c
 	${CC} ${CPPFLAGS} -o ${OBJPATH}DTN-sim.o -c DTN-sim.c -I ./
 	#-I /student/cmpt332/rtt/include -I /usr/include/tirpc
+
+liblist.a: list.o list_adders.o list_movers.o list_removers.o
+	ar -r ${LIBPATH}liblist.a ${OBJPATH}list.o ${OBJPATH}list_adders.o \
+	${OBJPATH}list_movers.o ${OBJPATH}list_removers.o
+
+list.o: list.c list.h
+	$(CC) $(CPPFLAGS) -c list.c -o $(OBJPATH)list.o -I ./
+
+list_adders.o: list_adders.c list.h
+	$(CC) $(CPPFLAGS) -c list_adders.c -o $(OBJPATH)list_adders.o -I ./
+
+list_movers.o: list_movers.c list.h
+	$(CC) $(CPPFLAGS) -c list_movers.c -o $(OBJPATH)list_movers.o -I ./
+
+list_removers.o: list_removers.c list.h
+	$(CC) $(CPPFLAGS) -c list_removers.c -o $(OBJPATH)list_removers.o -I ./
+
 	
 clean:
-	rm -fr ./build
+	rm -fr ./build ./DTN-sim
 	
